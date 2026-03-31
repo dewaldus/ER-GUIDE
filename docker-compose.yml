@@ -1,0 +1,7 @@
+services:
+  er-guide:
+    build: .
+    container_name: er-guide-site
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:3003:80"
