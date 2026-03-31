@@ -1,0 +1,506 @@
+<!DOCTYPE html>
+<html lang="en-ZA">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="ERGuide — The digital guide for employment relations. Manage labour law compliance, hearings, grievances and more. Trusted by South Africa's leading companies." />
+  <meta name="theme-color" content="#019540" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="ERGuide — The Digital Guide for Employment Relations" />
+  <meta property="og:description" content="Manage labour law compliance, hearings, grievances and more — anywhere, anytime." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://erguide.co.za" />
+
+  <title>ERGuide — The Digital Guide for Employment Relations</title>
+
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="stylesheet" href="css/style.css" />
+
+  <!-- Preconnect for Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+</head>
+<body>
+
+<!-- =========================================
+     NAVBAR
+     ========================================= -->
+<header class="navbar" role="banner">
+  <div class="container navbar-inner">
+
+    <a href="#home" class="navbar-logo" aria-label="ERGuide Home">
+      <img src="assets/logo-black.png" alt="ERGuide" />
+    </a>
+
+    <nav class="navbar-nav" aria-label="Main navigation">
+      <a href="#home">Home</a>
+      <a href="#features">Features</a>
+      <a href="#showcase">Product</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="navbar-actions">
+      <a href="https://erguide.co.za/login" class="navbar-login">Log In</a>
+      <a href="#contact" class="btn btn-primary btn-sm">Book a Demo</a>
+      <button class="hamburger" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+  </div>
+</header>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Mobile navigation">
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#features">Features</a>
+    <a href="#showcase">Product</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </nav>
+  <div class="mobile-cta">
+    <a href="#contact" class="btn btn-primary" style="width:100%;justify-content:center;">Book a Demo</a>
+  </div>
+</div>
+
+
+<!-- =========================================
+     HERO
+     ========================================= -->
+<section class="hero" id="home" aria-labelledby="hero-title">
+  <div class="container hero-inner">
+
+    <!-- Left: Copy -->
+    <div class="hero-copy">
+      <div class="hero-badge" role="note">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        Official HR Partner — PGA South Africa
+      </div>
+
+      <h1 class="hero-title" id="hero-title">
+        The Digital Guide for<br />
+        <span class="highlight">Employment Relations</span>
+      </h1>
+
+      <p class="hero-subtitle">
+        Navigate South African labour law with confidence. ERGuide gives every manager and HR professional the knowledge to handle hearings, grievances, compliance and more — anywhere, anytime.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#contact" class="btn btn-primary btn-lg">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          Start Free Trial
+        </a>
+        <a href="#showcase" class="btn btn-outline btn-lg">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+          See the Product
+        </a>
+      </div>
+
+      <div class="hero-trust" role="note">
+        <div class="hero-trust-dots" aria-hidden="true">
+          <span></span><span></span><span></span>
+        </div>
+        <span>Trusted by 8+ major South African enterprises</span>
+      </div>
+    </div>
+
+    <!-- Right: App mockup -->
+    <div class="hero-visual" aria-hidden="true">
+      <div class="hero-device">
+        <img src="assets/screenshots/dashboard.png" alt="ERGuide dashboard interface showing employment relations management tools" loading="eager" />
+      </div>
+
+      <!-- Floating cards (decorative on desktop) -->
+      <div class="hero-floating-card card-1">
+        <div class="icon-dot">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+        </div>
+        <div>
+          <div style="font-size:0.7rem;font-weight:500;color:var(--color-muted);">Compliance</div>
+          <div>Always up to date</div>
+        </div>
+      </div>
+
+      <div class="hero-floating-card card-2">
+        <div class="icon-dot">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        </div>
+        <div>
+          <div style="font-size:0.7rem;font-weight:500;color:var(--color-muted);">Quick Find</div>
+          <div>Instant law lookup</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- =========================================
+     TRUSTED BY
+     ========================================= -->
+<section class="trusted" aria-label="Trusted by South Africa's leading companies">
+  <div class="container">
+    <p class="trusted-header">Trusted by South Africa's leading companies</p>
+  </div>
+
+  <div class="logo-track-wrapper">
+    <div class="logo-track" aria-hidden="true">
+      <!-- First set -->
+      <img src="assets/client-logos/woolworths.png" alt="Woolworths" />
+      <img src="assets/client-logos/absa.png" alt="ABSA Bank" />
+      <img src="assets/client-logos/capitec.png" alt="Capitec Bank" />
+      <img src="assets/client-logos/discovery.jpg" alt="Discovery" />
+      <img src="assets/client-logos/tfg.png" alt="TFG Group" />
+      <img src="assets/client-logos/african-bank.png" alt="African Bank" />
+      <img src="assets/client-logos/hungry-lion.jpg" alt="Hungry Lion" />
+      <img src="assets/client-logos/bankservafrica.svg" alt="BankservAfrica" />
+      <!-- Duplicate for seamless loop -->
+      <img src="assets/client-logos/woolworths.png" alt="" />
+      <img src="assets/client-logos/absa.png" alt="" />
+      <img src="assets/client-logos/capitec.png" alt="" />
+      <img src="assets/client-logos/discovery.jpg" alt="" />
+      <img src="assets/client-logos/tfg.png" alt="" />
+      <img src="assets/client-logos/african-bank.png" alt="" />
+      <img src="assets/client-logos/hungry-lion.jpg" alt="" />
+      <img src="assets/client-logos/bankservafrica.svg" alt="" />
+    </div>
+  </div>
+</section>
+
+
+<!-- =========================================
+     WHY ERGUIDE
+     ========================================= -->
+<section class="why" id="why" aria-labelledby="why-title">
+  <div class="container">
+    <div class="text-center reveal">
+      <span class="section-label" aria-hidden="true">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        Why ERGuide
+      </span>
+      <h2 class="section-title" id="why-title">Employment Relations made simple</h2>
+      <p class="section-subtitle">South African labour law is complex and ever-changing. ERGuide gives your team the guidance they need at every step.</p>
+    </div>
+
+    <div class="why-grid">
+      <div class="why-card reveal">
+        <div class="why-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+        </div>
+        <h3>Labour law is complex</h3>
+        <p>Stay fully compliant with real-time, country-specific labour law guidance. ERGuide keeps your procedures aligned with the latest legislation — no guesswork.</p>
+      </div>
+
+      <div class="why-card reveal">
+        <div class="why-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6l9-4 9 4v6c0 5.55-3.84 10.74-9 12-5.16-1.26-9-6.45-9-12V6z"/></svg>
+        </div>
+        <h3>Hearings &amp; disputes are costly</h3>
+        <p>Disciplinary hearings, grievances and CCMA referrals carry real financial and reputational risk. Handle every procedure correctly from day one with structured step-by-step guidance.</p>
+      </div>
+
+      <div class="why-card reveal">
+        <div class="why-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
+        <h3>Managers need expert guidance</h3>
+        <p>Not every manager is a labour law expert — and they shouldn't have to be. Give every manager an expert in their pocket, available whenever they need it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- =========================================
+     FEATURES
+     ========================================= -->
+<section class="features" id="features" aria-labelledby="features-title">
+  <div class="container">
+    <div class="text-center reveal">
+      <span class="section-label" aria-hidden="true">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 12h6M9 15h4"/></svg>
+        Platform Features
+      </span>
+      <h2 class="section-title" id="features-title">Everything you need for ER compliance</h2>
+      <p class="section-subtitle">From onboarding to offboarding, ERGuide covers the full employment relations lifecycle with practical, actionable guidance.</p>
+    </div>
+
+    <div class="features-grid">
+
+      <div class="feature-card reveal">
+        <div class="feature-icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+        </div>
+        <h3>Guide Me</h3>
+        <p>Step-by-step procedure flows that walk managers through every employment relations process from start to finish — no experience required.</p>
+        <span class="feature-tag">Core Feature</span>
+      </div>
+
+      <div class="feature-card reveal">
+        <div class="feature-icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V9z"/><polyline points="13 2 13 9 20 9"/></svg>
+        </div>
+        <h3>Quick Find</h3>
+        <p>Instantly search for country-specific labour law requirements and company procedures. The right answer, right when you need it.</p>
+        <span class="feature-tag">Core Feature</span>
+      </div>
+
+      <div class="feature-card reveal">
+        <div class="feature-icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="23 7 16 12 23 17 23 7"/><rect x="1" y="5" width="15" height="14" rx="2" ry="2"/></svg>
+        </div>
+        <h3>How-To Videos</h3>
+        <p>Practical video demonstrations covering real scenarios: chairing disciplinary hearings, issuing warnings, presenting evidence at tribunals, and managing performance.</p>
+        <span class="feature-tag">Learning</span>
+      </div>
+
+      <div class="feature-card reveal">
+        <div class="feature-icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 00-3-3.87M16 3.13a4 4 0 010 7.75"/></svg>
+        </div>
+        <h3>Full ER Lifecycle</h3>
+        <p>Content is modularised by employment flow — from onboarding and probation, through performance management, to offboarding. Complete coverage in one platform.</p>
+        <span class="feature-tag">Comprehensive</span>
+      </div>
+
+      <div class="feature-card reveal">
+        <div class="feature-icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6l9-4 9 4v6c0 5.55-3.84 10.74-9 12-5.16-1.26-9-6.45-9-12V6z"/></svg>
+        </div>
+        <h3>Grievance &amp; Strike Management</h3>
+        <p>Structured processes for managing formal grievances, sexual harassment cases, and industrial action. Stay procedurally fair under pressure.</p>
+        <span class="feature-tag">Compliance</span>
+      </div>
+
+      <div class="feature-card reveal">
+        <div class="feature-icon" aria-hidden="true">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        </div>
+        <h3>Tribunal Preparation</h3>
+        <p>Prepare effectively for CCMA and Labour Court appearances with guidance on evidence presentation, documentation requirements, and procedural compliance.</p>
+        <span class="feature-tag">Legal</span>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- =========================================
+     SCREENSHOTS SHOWCASE
+     ========================================= -->
+<section class="showcase" id="showcase" aria-labelledby="showcase-title">
+  <div class="container">
+    <div class="text-center reveal">
+      <span class="section-label" aria-hidden="true">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+        The Platform
+      </span>
+      <h2 class="section-title" id="showcase-title">A powerful platform, beautifully simple</h2>
+      <p class="section-subtitle">ERGuide is designed to be used by every manager in your organisation — not just HR specialists.</p>
+    </div>
+
+    <div class="showcase-tabs" role="tablist" aria-label="Product screenshots">
+      <button class="showcase-tab active" role="tab" data-tab="dashboard" aria-selected="true" aria-controls="panel-dashboard">Dashboard</button>
+      <button class="showcase-tab" role="tab" data-tab="compliance" aria-selected="false" aria-controls="panel-compliance">Compliance</button>
+      <button class="showcase-tab" role="tab" data-tab="login" aria-selected="false" aria-controls="panel-login">Login</button>
+      <button class="showcase-tab" role="tab" data-tab="webapp" aria-selected="false" aria-controls="panel-webapp">Web App</button>
+    </div>
+
+    <div class="showcase-panels">
+      <div class="showcase-panel active" role="tabpanel" id="panel-dashboard" data-panel="dashboard">
+        <img src="assets/screenshots/dashboard.png" alt="ERGuide dashboard showing employment relations overview and quick actions" loading="lazy" />
+      </div>
+      <div class="showcase-panel" role="tabpanel" id="panel-compliance" data-panel="compliance">
+        <img src="assets/screenshots/compliance.png" alt="ERGuide compliance module showing labour law compliance status and guidance" loading="lazy" />
+      </div>
+      <div class="showcase-panel" role="tabpanel" id="panel-login" data-panel="login">
+        <img src="assets/screenshots/login.png" alt="ERGuide login screen" loading="lazy" />
+      </div>
+      <div class="showcase-panel" role="tabpanel" id="panel-webapp" data-panel="webapp">
+        <img src="assets/screenshots/webapp.png" alt="ERGuide web application interface" loading="lazy" />
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- =========================================
+     STATS
+     ========================================= -->
+<section class="stats" aria-label="ERGuide by the numbers">
+  <div class="container">
+    <div class="stats-grid">
+      <div class="stat-item reveal">
+        <div class="stat-number">
+          <span class="counter" data-target="8" aria-label="8">0</span>
+          <span class="suffix">+</span>
+        </div>
+        <div class="stat-label">Enterprise Clients</div>
+      </div>
+      <div class="stat-item reveal">
+        <div class="stat-number">
+          <span class="counter" data-target="2016" aria-label="2016">2016</span>
+        </div>
+        <div class="stat-label">Founded</div>
+      </div>
+      <div class="stat-item reveal">
+        <div class="stat-number">
+          <span class="counter" data-target="24" aria-label="24">0</span>
+          <span class="suffix">/7</span>
+        </div>
+        <div class="stat-label">Available Anytime</div>
+      </div>
+      <div class="stat-item reveal">
+        <div class="stat-number">
+          <span class="counter" data-target="100" aria-label="100">0</span>
+          <span class="suffix">%</span>
+        </div>
+        <div class="stat-label">South African Labour Law</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- =========================================
+     ABOUT
+     ========================================= -->
+<section class="about" id="about" aria-labelledby="about-title">
+  <div class="container">
+    <div class="about-inner">
+
+      <div class="about-content reveal">
+        <div>
+          <span class="section-label" aria-hidden="true">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+            About Us
+          </span>
+          <h2 class="section-title" id="about-title">Built by ER experts,<br />for South African businesses</h2>
+        </div>
+
+        <p>Founded in 2016 in Stellenbosch, ERGuide was built to solve a real problem: managers and HR professionals in South Africa need practical, accessible employment relations guidance — but traditional resources are often slow, expensive, or hard to apply in real situations.</p>
+
+        <p>Our platform delivers the full body of South African employment relations knowledge in a structured, searchable, and always-current format. From a first disciplinary warning to a Labour Court appearance, ERGuide is the expert resource your team needs.</p>
+
+        <div class="about-badge">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          Official HR Application Partner of the PGA South Africa
+        </div>
+      </div>
+
+      <div class="reveal" style="display:flex;justify-content:center;">
+        <div class="team-card">
+          <img
+            class="team-photo"
+            src="assets/team/dieter-bierman.jpg"
+            alt="Dieter Bierman, Founder of ERGuide"
+            loading="lazy"
+          />
+          <div class="team-info">
+            <h3>Dieter Bierman</h3>
+            <span class="team-role">Founder &amp; Director</span>
+            <p class="team-bio">Employment relations specialist and the driving force behind ERGuide's mission to make labour law compliance accessible to every South African employer.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- =========================================
+     CTA BANNER
+     ========================================= -->
+<section class="cta-banner" id="contact" aria-labelledby="cta-title">
+  <div class="container cta-inner">
+    <span class="section-label" style="color:rgba(255,255,255,0.75);margin-bottom:var(--space-4);" aria-hidden="true">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      Get Started Today
+    </span>
+    <h2 class="section-title" id="cta-title">Ready to simplify your<br />Employee Relations?</h2>
+    <p class="section-subtitle">Join South Africa's leading companies that trust ERGuide for compliant, confident employment relations management.</p>
+    <div class="cta-actions">
+      <a href="mailto:info@erguide.co.za?subject=Book%20a%20Demo" class="btn btn-white btn-lg">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Book a Demo
+      </a>
+      <a href="tel:+27000000000" class="btn btn-ghost-white btn-lg">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8 19.79 19.79 0 01.22 1.19 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.56-.56a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z"/></svg>
+        Contact Us
+      </a>
+    </div>
+  </div>
+</section>
+
+
+<!-- =========================================
+     FOOTER
+     ========================================= -->
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer-grid">
+
+      <!-- Brand -->
+      <div class="footer-brand">
+        <img src="assets/logo-negative.png" alt="ERGuide" class="footer-logo" />
+        <p class="footer-tagline">The digital guide for employment relations. Helping South African employers manage labour law compliance — anywhere, anytime.</p>
+      </div>
+
+      <!-- Product -->
+      <div class="footer-col">
+        <h4>Product</h4>
+        <ul>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#showcase">Screenshots</a></li>
+          <li><a href="https://erguide.co.za/login">Log In</a></li>
+          <li><a href="#contact">Book a Demo</a></li>
+        </ul>
+      </div>
+
+      <!-- Company -->
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="#about">About Us</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <li><a href="https://discovery.erguide.co.za" target="_blank" rel="noopener">Discovery Portal</a></li>
+        </ul>
+      </div>
+
+      <!-- Legal -->
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <ul>
+          <li><a href="assets/privacy.pdf" target="_blank" rel="noopener">Privacy Policy</a></li>
+          <li><a href="#contact">Terms of Service</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copy">&copy; <span id="year">2024</span> ERGuide. All rights reserved. Stellenbosch, South Africa.</p>
+      <div class="footer-links">
+        <a href="assets/privacy.pdf" target="_blank" rel="noopener">Privacy</a>
+        <a href="#contact">Contact</a>
+        <a href="https://erguide.co.za/login">Login</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Update year dynamically
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+<script src="js/main.js" defer></script>
+
+</body>
+</html>

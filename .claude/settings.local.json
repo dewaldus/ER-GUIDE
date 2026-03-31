@@ -1,0 +1,13 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:erguide.co.za)",
+      "WebSearch",
+      "WebFetch(domain:ematlasolutions.co.za)",
+      "WebFetch(domain:za.linkedin.com)",
+      "Bash(python3 '/Users/dewald/.claude/skills/ui-ux-pro-max/scripts/search.py' \"HR employee relations labour law compliance SaaS B2B South Africa professional\" --design-system -p \"ERGuide\" -f markdown)",
+      "Bash(python3 '/Users/dewald/.claude/skills/ui-ux-pro-max/scripts/search.py' \"B2B SaaS enterprise compliance professional\" --domain landing -n 5)",
+      "Bash(python3 '/Users/dewald/.claude/skills/ui-ux-pro-max/scripts/search.py' \"SaaS professional trust authority\" --domain color -n 3)"
+    ]
+  }
+}
