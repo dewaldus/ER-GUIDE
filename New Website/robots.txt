@@ -1,0 +1,17 @@
+User-agent: *
+Allow: /
+
+# Allow social media crawlers for link previews
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+User-agent: WhatsApp
+Allow: /
+
+Sitemap: https://er.phifilms.co.za/sitemap.xml
