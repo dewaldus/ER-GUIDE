@@ -41,7 +41,10 @@
       "Bash(echo \"south_africa\" curl -sL \"$BASE/img/zambia.dc7f7db.svg\" -o \"$OUT/zambia.svg\")",
       "Bash(echo \"zambia\" curl -sL \"$BASE/img/uganda.bd9a463.svg\" -o \"$OUT/uganda.svg\")",
       "Bash(echo \"uganda\" curl -sL \"$BASE/img/tanzania.f97dfd6.svg\" -o \"$OUT/tanzania.svg\")",
-      "Bash(echo \"tanzania\" curl -sL \"$BASE/img/mauritius.47424de.svg\" -o \"$OUT/mauritius.svg\")"
+      "Bash(echo \"tanzania\" curl -sL \"$BASE/img/mauritius.47424de.svg\" -o \"$OUT/mauritius.svg\")",
+      "Bash(curl -s \"https://miniature.earth/demo/world-news.htm\")",
+      "WebFetch(domain:www.atlantastretch.com)",
+      "WebFetch(domain:codecanyon.net)"
     ]
   }
 }

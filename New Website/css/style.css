@@ -233,7 +233,7 @@ ul, ol { list-style: none; }
   min-height: 320px;
   max-height: 520px;
   overflow: hidden;
-  opacity: 70;
+  opacity: 0;
   transition: opacity 1.5s ease-in;
   position: relative;
 }
