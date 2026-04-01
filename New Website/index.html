@@ -307,11 +307,85 @@
     </div>
 
     <div class="showcase-video">
-      <video controls playsinline preload="metadata" width="100%">
-        <source src="assets/hero-video.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
+      <div class="video-wrapper" id="videoWrapper">
+        <video id="promoVideo" playsinline preload="metadata" width="100%">
+          <source src="assets/9252429993_ER_GUIDE_Promo+2021.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+        <img id="videoThumbnail" src="assets/Gemini_Generated_Image_h68lwjh68lwjh68l.png" alt="" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none;" />
+        <button class="video-play-btn" id="videoPlayBtn" aria-label="Play video">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="white" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+        </button>
+      </div>
     </div>
+
+    <style>
+      .video-wrapper {
+        position: relative;
+        border-radius: var(--radius-2xl, 16px);
+        overflow: hidden;
+        background: #000;
+        cursor: pointer;
+      }
+      .video-wrapper video {
+        display: block;
+      }
+      .video-play-btn {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(0,0,0,0.35);
+        border: none;
+        cursor: pointer;
+        transition: background 0.2s;
+        width: 100%;
+        height: 100%;
+        padding: 0;
+      }
+      .video-play-btn:hover {
+        background: rgba(0,0,0,0.5);
+      }
+      .video-play-btn svg {
+        filter: drop-shadow(0 2px 8px rgba(0,0,0,0.5));
+        width: 72px;
+        height: 72px;
+        background: rgba(1,149,64,0.92);
+        border-radius: 50%;
+        padding: 20px;
+        transition: transform 0.15s;
+      }
+      .video-play-btn:hover svg {
+        transform: scale(1.08);
+      }
+      .video-wrapper.playing .video-play-btn {
+        display: none;
+      }
+    </style>
+
+    <script>
+      (function() {
+        var wrapper   = document.getElementById('videoWrapper');
+        var video     = document.getElementById('promoVideo');
+        var btn       = document.getElementById('videoPlayBtn');
+        var thumbnail = document.getElementById('videoThumbnail');
+
+        function play() {
+          thumbnail.style.display = 'none';
+          video.controls = true;
+          wrapper.classList.add('playing');
+          video.play();
+        }
+
+        btn.addEventListener('click', play);
+        video.addEventListener('ended', function() {
+          video.controls = false;
+          wrapper.classList.remove('playing');
+          thumbnail.style.display = 'block';
+        });
+      })();
+    </script>
   </div>
 </section>
 
