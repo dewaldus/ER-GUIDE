@@ -4,8 +4,28 @@
    Font: Plus Jakarta Sans
    ============================================= */
 
-/* --- Google Fonts --- */
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap');
+/* Font loaded via <link> in <head> — no @import needed here */
+
+/* --- Skip link (accessibility) --- */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: var(--space-4, 1rem);
+  z-index: 9999;
+  padding: var(--space-2, 0.5rem) var(--space-4, 1rem);
+  background: #019540;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 0.875rem;
+  border-radius: 0 0 6px 6px;
+  text-decoration: none;
+  transition: top 0.15s ease;
+}
+.skip-link:focus {
+  top: 0;
+  outline: 3px solid #ffffff;
+  outline-offset: 2px;
+}
 
 /* --- Design Tokens --- */
 :root {
@@ -600,6 +620,108 @@ ul, ol { list-style: none; }
   }
 }
 
+/* --- Hero entrance animations --- */
+
+@keyframes hero-rise {
+  from {
+    opacity: 0;
+    transform: translateY(var(--rise-y, 20px));
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes hero-fade {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes highlight-color {
+  0%   { color: #ffffff; }
+  100% { color: var(--color-primary); }
+}
+
+@keyframes underline-draw {
+  from { transform: scaleX(0); }
+  to   { transform: scaleX(1); }
+}
+
+/* Badge — quick scale+fade from slightly below */
+.hero-badge {
+  --rise-y: 12px;
+  animation: hero-rise 500ms ease-out both;
+  animation-delay: 0ms;
+}
+
+/* Title line 1 — slides up */
+.hero-title-line1 {
+  display: inline-block;
+  --rise-y: 22px;
+  animation: hero-rise 550ms ease-out both;
+  animation-delay: 120ms;
+}
+
+/* Highlight — rises in as white, then colour sweeps to green */
+.hero-title .highlight {
+  display: inline-block;
+  --rise-y: 22px;
+  animation:
+    hero-rise       550ms ease-out  120ms both,
+    highlight-color 450ms ease-out  500ms both;
+}
+
+/* Underline draw on the highlight */
+.hero-title .highlight::after {
+  content: '';
+  display: block;
+  height: 3px;
+  border-radius: 2px;
+  background: var(--color-primary);
+  transform-origin: left center;
+  transform: scaleX(0);
+  animation: underline-draw 400ms cubic-bezier(0.22, 1, 0.36, 1) 700ms both;
+}
+
+/* Subtitle */
+.hero-subtitle {
+  --rise-y: 18px;
+  animation: hero-rise 500ms ease-out 420ms both;
+}
+
+/* Buttons — staggered */
+.hero-actions .btn:nth-child(1) {
+  --rise-y: 14px;
+  animation: hero-rise 400ms ease-out 580ms both;
+}
+.hero-actions .btn:nth-child(2) {
+  --rise-y: 14px;
+  animation: hero-rise 400ms ease-out 670ms both;
+}
+
+/* Trust line — fades in only (no Y movement — calms the sequence) */
+.hero-trust {
+  animation: hero-fade 400ms ease 820ms both;
+}
+
+/* Floating cards — slide in from their respective sides */
+.hero-floating-card.card-2 {
+  animation: hero-card-right 500ms cubic-bezier(0.22, 1, 0.36, 1) 950ms both;
+}
+.hero-floating-card.card-1 {
+  animation: hero-card-left 500ms cubic-bezier(0.22, 1, 0.36, 1) 1060ms both;
+}
+
+@keyframes hero-card-right {
+  from { opacity: 0; transform: translate(24px, -6px); }
+  to   { opacity: 1; transform: translate(0, 0); }
+}
+@keyframes hero-card-left {
+  from { opacity: 0; transform: translate(-24px, 6px); }
+  to   { opacity: 1; transform: translate(0, 0); }
+}
+
 /* --- Trusted By --- */
 .trusted {
   padding: var(--space-12) 0;
@@ -1074,4 +1196,12 @@ ul, ol { list-style: none; }
   *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
   .logo-track { animation: none; }
   .reveal { opacity: 1; transform: none; }
+  .hero-badge,
+  .hero-title-line1,
+  .hero-title .highlight,
+  .hero-title .highlight::after,
+  .hero-actions .btn,
+  .hero-trust,
+  .hero-floating-card { animation: none; opacity: 1; transform: none; color: inherit; }
+  .hero-title .highlight { color: var(--color-primary); }
 }

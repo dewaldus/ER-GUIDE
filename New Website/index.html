@@ -3,25 +3,105 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Primary SEO -->
+  <title>ERGuide — The Digital Guide for Employment Relations</title>
   <meta name="description" content="ERGuide — The digital guide for employment relations. Manage labour law compliance, hearings, grievances and more. Trusted by South Africa's leading companies." />
+  <meta name="author" content="ERGuide" />
+  <meta name="robots" content="index, follow" />
   <meta name="theme-color" content="#019540" />
+  <link rel="canonical" href="https://erguide.co.za/" />
 
   <!-- Open Graph -->
-  <meta property="og:title" content="ERGuide — The Digital Guide for Employment Relations" />
-  <meta property="og:description" content="Manage labour law compliance, hearings, grievances and more — anywhere, anytime." />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://erguide.co.za" />
+  <meta property="og:url" content="https://erguide.co.za/" />
+  <meta property="og:site_name" content="ERGuide" />
+  <meta property="og:locale" content="en_ZA" />
+  <meta property="og:title" content="ERGuide — The Digital Guide for Employment Relations" />
+  <meta property="og:description" content="Navigate labour law with confidence. ERGuide gives every manager and HR professional the knowledge to handle hearings, grievances, compliance and more — anywhere, anytime." />
+  <meta property="og:image" content="https://erguide.co.za/assets/og-image.jpg" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="ERGuide — The Digital Guide for Employment Relations" />
 
-  <title>ERGuide — The Digital Guide for Employment Relations</title>
+  <!-- Twitter / X Card -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="ERGuide — The Digital Guide for Employment Relations" />
+  <meta name="twitter:description" content="Navigate labour law with confidence. ERGuide gives every manager and HR professional the knowledge to handle hearings, grievances and compliance — anywhere, anytime." />
+  <meta name="twitter:image" content="https://erguide.co.za/assets/og-image.jpg" />
 
+  <!-- Icons -->
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
-  <link rel="stylesheet" href="css/style.css" />
+  <link rel="apple-touch-icon" sizes="180x180" href="assets/apple-touch-icon.png" />
 
-  <!-- Preconnect for Google Fonts -->
+  <!-- Fonts — loaded as <link> to avoid render-blocking @import -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;1,400&display=swap" />
+
+  <link rel="stylesheet" href="css/style.css" />
+
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://erguide.co.za/#organization",
+        "name": "ERGuide",
+        "url": "https://erguide.co.za",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://erguide.co.za/assets/logo-black.png"
+        },
+        "description": "The digital guide for employment relations. Helping South African employers manage labour law compliance — anywhere, anytime.",
+        "foundingDate": "2016",
+        "foundingLocation": {
+          "@type": "Place",
+          "name": "Stellenbosch, South Africa"
+        },
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "contactType": "sales",
+          "email": "info@erguide.co.za"
+        },
+        "sameAs": []
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://erguide.co.za/#website",
+        "url": "https://erguide.co.za",
+        "name": "ERGuide",
+        "publisher": { "@id": "https://erguide.co.za/#organization" }
+      },
+      {
+        "@type": "SoftwareApplication",
+        "name": "ERGuide",
+        "applicationCategory": "BusinessApplication",
+        "operatingSystem": "Web, iOS, Android",
+        "url": "https://erguide.co.za",
+        "description": "A digital employment relations platform giving South African managers and HR professionals step-by-step guidance on labour law compliance, hearings, grievances and more.",
+        "offers": {
+          "@type": "Offer",
+          "availability": "https://schema.org/OnlineOnly"
+        },
+        "publisher": { "@id": "https://erguide.co.za/#organization" }
+      },
+      {
+        "@type": "Person",
+        "name": "Dieter Bierman",
+        "jobTitle": "Founder & Director",
+        "worksFor": { "@id": "https://erguide.co.za/#organization" },
+        "description": "Employment relations specialist and founder of ERGuide."
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
+
+<a class="skip-link" href="#main-content">Skip to main content</a>
 
 <!-- =========================================
      NAVBAR
@@ -53,7 +133,7 @@
 </header>
 
 <!-- Mobile Menu -->
-<div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="Mobile navigation">
+<div class="mobile-menu" id="mobile-menu" aria-label="Mobile navigation" aria-hidden="true">
   <nav>
     <a href="#home">Home</a>
     <a href="#features">Features</a>
@@ -67,6 +147,8 @@
 </div>
 
 
+<main id="main-content">
+
 <!-- =========================================
      HERO
      ========================================= -->
@@ -75,13 +157,13 @@
 
     <!-- Left: Copy -->
     <div class="hero-copy">
-      <div class="hero-badge" role="note">
+      <div class="hero-badge">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
         Official HR Partner — PGA South Africa
       </div>
 
       <h1 class="hero-title" id="hero-title">
-        The Digital Guide for<br />
+        <span class="hero-title-line1">The Digital Guide for</span><br />
         <span class="highlight">Employment Relations</span>
       </h1>
 
@@ -100,7 +182,7 @@
         </a>
       </div>
 
-      <div class="hero-trust" role="note">
+      <div class="hero-trust">
         <div class="hero-trust-dots" aria-hidden="true">
           <span></span><span></span><span></span>
         </div>
@@ -110,7 +192,7 @@
 
     <!-- Right: Miniature Earth Globe -->
     <div class="hero-visual">
-      <div class="hero-floating-card card-2">
+      <div class="hero-floating-card card-2" aria-hidden="true">
         <div class="icon-dot">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
         </div>
@@ -126,7 +208,7 @@
         </div>
       </div>
 
-      <div class="hero-floating-card card-1">
+      <div class="hero-floating-card card-1" aria-hidden="true">
         <div class="icon-dot">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
         </div>
@@ -180,7 +262,7 @@
 <section class="why" id="why" aria-labelledby="why-title">
   <div class="container">
     <div class="text-center reveal">
-      <span class="section-label" aria-hidden="true">
+      <span class="section-label">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
         Why ERGuide
       </span>
@@ -223,7 +305,7 @@
 <section class="features" id="features" aria-labelledby="features-title">
   <div class="container">
     <div class="text-center reveal">
-      <span class="section-label" aria-hidden="true">
+      <span class="section-label">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M9 9h6M9 12h6M9 15h4"/></svg>
         Platform Features
       </span>
@@ -298,7 +380,7 @@
 <section class="showcase" id="showcase" aria-labelledby="showcase-title">
   <div class="container">
     <div class="text-center reveal">
-      <span class="section-label" aria-hidden="true">
+      <span class="section-label">
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><rect x="2" y="3" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
         The Platform
       </span>
@@ -310,6 +392,7 @@
       <div class="video-wrapper" id="videoWrapper">
         <video id="promoVideo" playsinline preload="metadata" width="100%">
           <source src="assets/9252429993_ER_GUIDE_Promo+2021.mp4" type="video/mp4" />
+          <!-- TODO: add a WebVTT captions file for accessibility: <track kind="captions" src="assets/promo-captions.vtt" srclang="en" label="English" default /> -->
           Your browser does not support the video tag.
         </video>
         <img id="videoThumbnail" src="assets/Gemini_Generated_Image_h68lwjh68lwjh68l.png" alt="" aria-hidden="true" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;pointer-events:none;" />
@@ -437,7 +520,7 @@
 
       <div class="about-content reveal">
         <div>
-          <span class="section-label" aria-hidden="true">
+          <span class="section-label">
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
             About Us
           </span>
@@ -480,7 +563,7 @@
      ========================================= -->
 <section class="cta-banner" id="contact" aria-labelledby="cta-title">
   <div class="container cta-inner">
-    <span class="section-label" style="color:rgba(255,255,255,0.75);margin-bottom:var(--space-4);" aria-hidden="true">
+    <span class="section-label" style="color:rgba(255,255,255,0.75);margin-bottom:var(--space-4);">
       <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       Get Started Today
     </span>
@@ -491,6 +574,7 @@
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
         Book a Demo
       </a>
+      <!-- TODO: replace +27000000000 with the real phone number -->
       <a href="tel:+27000000000" class="btn btn-ghost-white btn-lg">
         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8 19.79 19.79 0 01.22 1.19 2 2 0 012.18 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 7.09a16 16 0 006 6l.56-.56a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92v2z"/></svg>
         Contact Us
@@ -499,6 +583,8 @@
   </div>
 </section>
 
+
+</main><!-- /#main-content -->
 
 <!-- =========================================
      FOOTER
@@ -561,13 +647,13 @@
   document.getElementById('year').textContent = new Date().getFullYear();
 </script>
 <script src="js/main.js" defer></script>
-<script src="js/miniature.earth.js"></script>
-<script src="js/globe/assets.js"></script>
-<script src="js/globe/colors.js"></script>
-<script src="js/globe/earth-config.js"></script>
-<script src="js/globe/countries.js"></script>
-<script src="js/globe/controller.js"></script>
-<script src="js/globe-entry.js"></script>
+<script src="js/miniature.earth.js" defer></script>
+<script src="js/globe/assets.js" defer></script>
+<script src="js/globe/colors.js" defer></script>
+<script src="js/globe/earth-config.js" defer></script>
+<script src="js/globe/countries.js" defer></script>
+<script src="js/globe/controller.js" defer></script>
+<script src="js/globe-entry.js" defer></script>
 
 
 </body>

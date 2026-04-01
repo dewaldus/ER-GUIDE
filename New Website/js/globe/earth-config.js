@@ -15,10 +15,10 @@
   window.ERGuideGlobe.earthConfig = {
     selector: 'myearth',
     location: { lat: -10.6112329, lng: 40.4384161 },
-    zoom: 2,
+    zoom: 1,
     light: 'simple',
     lightColor: '#d2d2d2',
-    lightIntensity: 1,
+    lightIntensity: 2,
     lightAmbience: 0.0,
     mapImage: assets.mapImage || 'assets/hologram-map.svg',
     transparent: true,
