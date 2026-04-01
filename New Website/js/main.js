@@ -62,9 +62,29 @@
   });
 
   /* --- Stat counters --- */
-  function animateCounter(el, target, duration) {
+  function formatCounterValue(value, decimalPlaces, useComma) {
+    if (decimalPlaces > 0) {
+      const formatted = value.toFixed(decimalPlaces);
+      return useComma ? formatted.replace('.', ',') : formatted;
+    }
+    return String(Math.round(value));
+  }
+
+  function getCounterTarget(targetAttr) {
+    const raw = String(targetAttr).trim();
+    const useComma = raw.includes(',') && !raw.includes('.');
+    const normalized = raw.replace(/,/g, '.');
+    const value = Number(normalized);
+    const decimalPlaces = normalized.includes('.') ? normalized.split('.')[1].length : 0;
+    return {
+      value: Number.isFinite(value) ? value : 0,
+      decimalPlaces,
+      useComma,
+    };
+  }
+
+  function animateCounter(el, target, decimalPlaces, useComma, duration) {
     const start = performance.now();
-    const isFloat = target % 1 !== 0;
 
     function step(now) {
       const elapsed = now - start;
@@ -72,9 +92,7 @@
       // Ease out cubic
       const eased = 1 - Math.pow(1 - progress, 3);
       const value = eased * target;
-      el.textContent = isFloat
-        ? value.toFixed(1)
-        : Math.round(value).toLocaleString();
+      el.textContent = formatCounterValue(value, decimalPlaces, useComma);
       if (progress < 1) requestAnimationFrame(step);
     }
 
@@ -87,8 +105,8 @@
       entries.forEach(entry => {
         if (entry.isIntersecting && !entry.target.dataset.animated) {
           entry.target.dataset.animated = 'true';
-          const target = parseFloat(entry.target.dataset.target);
-          animateCounter(entry.target, target, 1800);
+          const { value, decimalPlaces, useComma } = getCounterTarget(entry.target.dataset.target);
+          animateCounter(entry.target, value, decimalPlaces, useComma, 1800);
         }
       });
     }, { threshold: 0.5 });
