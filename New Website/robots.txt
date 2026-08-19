@@ -14,4 +14,4 @@ Allow: /
 User-agent: WhatsApp
 Allow: /
 
-Sitemap: https://er.phifilms.co.za/sitemap.xml
+Sitemap: https://www.erguide.digital/sitemap.xml
