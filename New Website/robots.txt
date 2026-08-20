@@ -1,17 +1,18 @@
+# ERGuide public marketing site
+# OAI-SearchBot is explicitly allowed so public pages can be considered for
+# discovery and citation in ChatGPT search. The wildcard group covers other
+# standards-compliant search, answer-engine and social-preview crawlers.
+
+User-agent: OAI-SearchBot
+Allow: /
+Disallow: /docs/
+Disallow: /assets/team/
+Disallow: /.DS_Store
+
 User-agent: *
 Allow: /
-
-# Allow social media crawlers for link previews
-User-agent: facebookexternalhit
-Allow: /
-
-User-agent: Twitterbot
-Allow: /
-
-User-agent: LinkedInBot
-Allow: /
-
-User-agent: WhatsApp
-Allow: /
+Disallow: /docs/
+Disallow: /assets/team/
+Disallow: /.DS_Store
 
 Sitemap: https://www.erguide.digital/sitemap.xml
