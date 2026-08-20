@@ -22,6 +22,14 @@
   const hamburger = document.querySelector('.hamburger');
   const mobileMenu = document.querySelector('.mobile-menu');
   if (hamburger && mobileMenu) {
+    const closeMobileMenu = () => {
+      hamburger.classList.remove('open');
+      mobileMenu.classList.remove('open');
+      hamburger.setAttribute('aria-expanded', 'false');
+      mobileMenu.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    };
+
     hamburger.addEventListener('click', () => {
       const isOpen = hamburger.classList.toggle('open');
       mobileMenu.classList.toggle('open', isOpen);
@@ -32,13 +40,20 @@
 
     // Close on link click
     mobileMenu.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        hamburger.classList.remove('open');
-        mobileMenu.classList.remove('open');
-        hamburger.setAttribute('aria-expanded', 'false');
-        mobileMenu.setAttribute('aria-hidden', 'true');
-        document.body.style.overflow = '';
-      });
+      link.addEventListener('click', closeMobileMenu);
+    });
+
+    document.addEventListener('keydown', event => {
+      if (event.key === 'Escape' && hamburger.classList.contains('open')) {
+        closeMobileMenu();
+        hamburger.focus();
+      }
+    });
+
+    window.addEventListener('resize', () => {
+      if (window.innerWidth >= 1024 && hamburger.classList.contains('open')) {
+        closeMobileMenu();
+      }
     });
   }
 
@@ -141,13 +156,53 @@
         if (entry.isIntersecting) {
           const id = entry.target.id;
           navLinks.forEach(link => {
-            link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
+            const isCurrent = link.getAttribute('href') === `#${id}`;
+            link.classList.toggle('active', isCurrent);
+            if (isCurrent) {
+              link.setAttribute('aria-current', 'location');
+            } else {
+              link.removeAttribute('aria-current');
+            }
           });
         }
       });
     }, { threshold: 0.4 });
 
     sections.forEach(s => sectionObserver.observe(s));
+  }
+
+  /* --- Contact form: prepare a message in the visitor's email app --- */
+  const contactForm = document.getElementById('contactForm');
+  const contactFormStatus = document.getElementById('contactFormStatus');
+
+  if (contactForm) {
+    contactForm.addEventListener('submit', event => {
+      event.preventDefault();
+
+      const formData = new FormData(contactForm);
+      const name = String(formData.get('name') || '').trim();
+      const email = String(formData.get('email') || '').trim();
+      const organisation = String(formData.get('organisation') || '').trim();
+      const message = String(formData.get('message') || '').trim();
+
+      const subject = `ERGuide website enquiry from ${name}`;
+      const body = [
+        'Hello ERGuide,',
+        '',
+        `Name: ${name}`,
+        `Work email: ${email}`,
+        organisation ? `Organisation: ${organisation}` : '',
+        '',
+        'I would like help with:',
+        message,
+      ].filter((line, index, lines) => line || lines[index - 1] !== '').join('\n');
+
+      if (contactFormStatus) {
+        contactFormStatus.textContent = 'Opening your email app so you can review and send the enquiry.';
+      }
+
+      window.location.href = `mailto:info@erguide.co.za?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    });
   }
 
 })();

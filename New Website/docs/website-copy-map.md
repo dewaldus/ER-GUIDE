@@ -1,31 +1,49 @@
-# ERGuide website copy map
+# ERGuide homepage copy map
 
 Prepared: 19 August 2026
 
-This is the working copy source for the updated homepage. It keeps the current single-page format and visual language while changing the product story from an online legal guide to guided employment-relations case management.
+This document is the content source of truth for the updated ERGuide homepage. The update keeps the current single-page design, animated client-logo strip and Africa globe. It changes the story and information hierarchy without turning the work into a full website refresh.
 
-## Message standard
+## Content and design guardrails
 
-- Brand: ERGuide
-- Formal category: employment relations
-- Product description: guided employment-relations case management
-- Unit of work: case
-- Resulting record: case record
-- Main users: HR/ER teams and operational managers
-- Organisation spelling follows South African English.
-- "Log in" is used as the action throughout.
+- Keep the approved hero headline and subheading exactly as supplied.
+- Keep the three product ideas visible in the hero: Efficient, Consistency and Cost Effective.
+- Reserve visible numbering for the five-stage workflow so the supporting benefits and capabilities do not appear to be competing sequences.
+- Keep the existing client logos and use a slower, smoother marquee animation.
+- Keep the globe in its current hero position and preserve its interaction.
+- Remove Dieter's photograph and all founder biography content.
+- Use plain South African English and short, direct sentences.
+- Avoid promises of guaranteed compliance, fairness, cost savings or legal outcomes.
+- Use "employment relations" for the category and "ER" where the audience will understand it.
+- Use "Log in" for the action, not "Login".
+- Use sentence case for headings outside the approved uppercase hero.
+- Use the current official title, "Code of Practice: Dismissal", published in Government Gazette 53294 on 4 September 2025.
 
-The copy avoids promises of guaranteed compliance, fairness, legal outcomes, uptime, cost savings or complete coverage. It also avoids publishing unconfirmed AI, integration and native-app claims.
+The five-stage workflow is informed by the ERGuide Product Overview v3: Find, Start, Capture, Track and Report. The deck's grievance example confirms that individual processes can follow the same guided pattern without needing a second workflow diagram on the homepage.
+
+## Page flow
+
+1. Navigation
+2. Hero and three product ideas
+3. Client-logo credibility strip
+4. The problem
+5. The ERGuide solution
+6. Supported ER processes and platform guides
+7. ERGuide Online overview and product video
+8. Five-stage workflow and nine supporting capabilities
+9. Anytime, anywhere access
+10. Contact form and telephone call to action
+11. Footer
 
 ## Metadata
 
 Page title:
 
-> ERGuide | Guided Employment Relations Case Management
+> ERGuide | Digital Employment Relations Case Management
 
 Meta description:
 
-> Guide managers through employment-relations processes, capture complete case records, track progress and report from one connected platform.
+> Digital case management and guided employment-relations processes for modern organisations.
 
 Social title:
 
@@ -33,116 +51,207 @@ Social title:
 
 Social description:
 
-> Connect policy guidance, case workflows, evidence, status and reporting in one structured record with ERGuide.
+> Digital case management and guided employment-relations processes for modern organisations.
 
 Structured product description:
 
-> ERGuide is a guided employment-relations case-management platform that connects guidance, workflow steps, evidence, status and reporting in one digital case record.
-
-Canonical website:
-
-> https://www.erguide.digital/
-
-Application login:
-
-> https://er.phifilms.co.za/login
+> ERGuide is a digital case-management platform with guided employment-relations processes, search, digital records, status tracking and reporting.
 
 ## Navigation
 
-Desktop and mobile navigation use the same labels:
-
-- Why ERGuide
+- The problem
+- The solution
+- Features
 - How it works
-- Processes
-- About
 - Contact
-
-Utility actions:
-
 - Log in
 - Book a demo
 
 ## Hero
 
-Category badge:
+Category label:
 
-> Guided ER case management
+> Digital ER case management
 
-Headline:
+Approved headline:
 
-> Clearer employee relations.
+> CLEARER EMPLOYEE RELATIONS.
 >
-> Stronger accountability.
+> STRONGER ACCOUNTABILITY.
 
-Supporting copy:
+Approved subheading:
 
-> ERGuide turns policy into guided workflows and complete case records, helping managers act consistently while HR/ER keeps visibility and control.
+> Digital case management and guided employment-relations processes for modern organisations
+
+Highlighted product ideas:
+
+1. Efficient
+2. Consistency
+3. Cost effective
 
 Primary action:
 
-> Book a workflow-fit demo
+> Book a demo
 
 Secondary action:
 
 > See how it works
 
-Supporting line:
+Audience line:
 
-> Built for HR/ER teams and operational managers.
+> Built for HR/ER teams and the managers who handle cases day to day.
 
-Floating card one:
+Globe card one:
 
-> Guided workflow
+> Guided process
 >
-> A clear next step
+> Clear next steps
 
-Floating card two:
+Globe card two:
 
-> Case record
+> Digital record
 >
-> Evidence and status together
+> Case information together
 
-The partnership label is removed from the hero until the exact current designation is confirmed.
-
-## Customer logo strip
+## Client-logo strip
 
 Heading:
 
 > Selected organisations using ERGuide
 
-The words "leading", "major" and "8+" are removed. Every displayed logo still needs current relationship and usage approval.
+The logos stay as supplied. Confirm current client relationships and logo permissions before public launch.
 
-## Why ERGuide
+## The problem
 
 Section label:
 
-> Why ERGuide
+> The problem
 
 Heading:
 
-> ER work is harder when the process and the record live in different places.
+> Complex labour law is difficult to manage when processes and information are scattered.
 
 Introduction:
 
-> Managers spend time looking for the right policy or form. HR/ER teams chase updates, gather evidence and rebuild the file when it is time to report.
+> The cost of getting an employment-relations process wrong can be high, both financially and operationally.
 
-Card one:
+### Complex labour law
 
-> Finding the right process
->
-> Guidance, policies and forms are often stored in different places, so the first step can take longer than it should.
+> Legal requirements, case law and internal policies can be difficult to interpret in day-to-day situations.
 
-Card two:
+### Processes and information get messy
 
-> Keeping the case together
->
-> Documents, evidence, signatures and decisions need to stay with the case as it moves forward.
+> Forms, evidence, emails and updates often sit in different places, leaving managers unsure about the next step.
 
-Card three:
+### Non-compliance can be costly
 
-> Knowing what happens next
->
-> Without a shared view of ownership and status, HR/ER has to follow up manually.
+> Inconsistent or poorly documented processes can lead to disputes, delays and avoidable cost.
+
+## The solution
+
+Section label:
+
+> The solution: ERGuide
+
+Heading:
+
+> ERGuide makes complex ER processes easier to follow.
+
+Introduction:
+
+> Clear guidance and digital case records help teams work more efficiently and apply a more consistent process.
+
+### Simple to use
+
+> Clear enough for anyone responsible for an ER matter to understand and use in day-to-day work.
+
+### Efficient and consistent
+
+> Guided steps reduce delays and help teams follow the same process across the organisation.
+
+### Built for South African law
+
+> Content and workflows are designed around South African employment-relations requirements.
+
+### Expanded for African organisations
+
+> ERGuide can be configured for the legal and policy context of teams operating elsewhere in Africa.
+
+## Features and supported ER processes
+
+Section label:
+
+> Features
+
+Heading:
+
+> Support for the ER work your team handles every day
+
+Introduction:
+
+> ERGuide combines guided processes, digital records and practical search tools across the matters that need careful handling.
+
+### Misconduct
+
+> Run a standardised disciplinary process that supports consistent conduct decisions and procedural fairness across the organisation.
+
+### Incapacity: poor performance
+
+> Document expectations, support and review steps within reasonable timeframes. Keep the information together so the next workplace decision is easier to make and explain.
+
+### Platform guides and search
+
+> Follow visual guides that set out legal principles in a practical sequence. Checklists, added context and search help managers find relevant guidance quickly.
+
+### Incapacity: incompatibility
+
+> Handle situations where an employee struggles to work effectively within a team or workplace culture through a structured process informed by the Code of Practice: Dismissal.
+
+### Grievances
+
+> Give employees a clear route for raising concerns through the appropriate management levels. Track each step, response and outcome in one documented record.
+
+### Incapacity: ill health
+
+> Guide temporary and permanent ill-health cases through a fair, sensitive process. Keep consultation notes, supporting information and decisions together throughout the case.
+
+### Harassment complaints
+
+> Let employees submit complaints informally or formally, including through a QR code entry point. Keep the process accessible while recording how each complaint is handled.
+
+### Operational requirements
+
+> Manage consultation steps, supporting information and decisions within a clear timeframe. Keep the record needed to understand how the process progressed and what happens next.
+
+## ERGuide Online
+
+Section label:
+
+> ERGuide Online
+
+Heading:
+
+> Critical ER processes, current data and practical guidance in one place
+
+Introduction:
+
+> ERGuide Online supports the employment-relations work teams deal with most often. It captures information as work happens and turns the case record into useful status and reporting data.
+
+### Digital guidance
+
+> Access company forms and guided processes for misconduct, incapacity, operational requirements and grievances. Capture actions as they happen so each case has a consistent digital record.
+
+### Practical process support
+
+> Follow clear procedural steps informed by the Code of Practice: Dismissal. A documented process helps reduce inconsistency and avoid unnecessary disputes.
+
+### Current data and insight
+
+> See case information and reporting on your device, so HR/ER can spot delays, follow up sooner and make decisions from the same record.
+
+Video action:
+
+> Play the ERGuide product overview
 
 ## How it works
 
@@ -152,317 +261,147 @@ Section label:
 
 Heading:
 
-> One clear path from guidance to reporting
+> A modular, mobile-first system for day-to-day ER work
 
 Introduction:
 
-> ERGuide keeps the guidance, work and record connected throughout the case.
+> ERGuide turns complex HR and employment-relations processes into clear steps, supported by current information, digital records and practical guidance.
 
-Card one:
+### One connected workflow
 
-> Find
->
-> Search relevant guidance, legal principles and approved company policy.
->
-> Tag: Guidance
+Workflow heading:
 
-Card two:
+> From the right guidance to a complete case record
 
-> Start
->
-> Open the right form and guided process for the case.
->
-> Tag: Workflow
+Workflow summary:
 
-Card three:
+> Less searching. Fewer handoffs. One clear record from the first step to reporting.
 
-> Capture
->
-> Add actions, documents, evidence and signatures as the work happens.
->
-> Tag: Evidence
+1. **Find:** Search the relevant guidance and policy.
+2. **Start:** Open the right form and guided process.
+3. **Capture:** Build the case record by capturing actions, evidence and signatures as they happen.
+4. **Track:** See ownership, progress and the next step.
+5. **Report:** Use the complete record for management insight.
 
-Card four:
+### Supporting capabilities
 
-> Track
->
-> See who owns the case, what has been completed and what needs attention next.
->
-> Tag: Ownership
+1. **Powerful, instant search:** Find relevant guidance in seconds. Search across documents, legal principles and approved company policies for information that fits the matter in front of you.
+2. **Step-by-step guidance:** Follow clear how-to and what-to-do instructions, supported by visuals, checklists and model examples.
+3. **Content kept current:** Guidance is maintained as legislation, case law, country requirements and company policies change.
+4. **Supporting detail in context:** Open concise supporting information when you need it, without losing your place in the process.
+5. **Capture work as it happens:** Record actions and supporting information while the work is happening, whether you are at a desk or on the move.
+6. **Digital signing and storage:** Use electronic signatures and keep records and evidence together in the case file, creating a clear audit trail.
+7. **Status tracking and reporting:** Track each ER process and create professional reports from the same digital record.
+8. **Customisable templates:** Use electronic forms that reflect your brand, policies and procedures, helping teams follow a consistent approach.
+9. **Start with what you need:** Start with the processes you need now, then add modules as your organisation grows or requirements change.
 
-Card five:
-
-> Report
->
-> Use the same record for case documents, updates and management reporting.
->
-> Tag: Reporting
-
-Card six:
-
-> Keep one complete record
->
-> Keep the full history together, including actions, evidence, status changes and outcomes.
->
-> Tag: Accountability
-
-## Process coverage
-
-Section label:
-
-> Process coverage
+## Anytime. Anywhere.
 
 Heading:
 
-> Start with the ER processes your organisation needs most
+> ER guidance and case records wherever your managers need them
 
 Introduction:
 
-> Use a guided pathway for each case and add modules when your team is ready.
+> Give managers access to a mobile-friendly platform for disciplinary, incapacity and other ER processes, available when and where the work happens.
 
-Card one:
+### Mobile-friendly access
 
-> Misconduct
->
-> Record allegations, evidence, meetings and outcomes in one case record.
+> Open guidance, forms and case information on a phone, tablet or desktop without changing the way the process works.
 
-Card two:
+### Available 24/7
 
-> Grievances
->
-> Give concerns a clear route from submission and review to engagement, outcome and closure.
+> Access ERGuide online whenever a manager needs to check guidance, capture an action or review a case.
 
-Card three:
+### Consistent across teams
 
-> Harassment complaints
->
-> Support formal or informal reporting and keep each action recorded with the case.
+> Give managers the same guided steps and templates across locations, tailored to your employment-relations practices.
 
-Card four:
-
-> Poor performance
->
-> Document expectations, support, reviews and next steps in a clear sequence.
-
-Card five:
-
-> Ill health and incompatibility
->
-> Keep consultation, supporting information and decisions together throughout the case.
-
-Card six:
-
-> Operational requirements
->
-> Guide consultation steps and retain the records needed to understand how the case progressed.
-
-The module names must stay aligned with the live product.
-
-## Value by role
+## Contact
 
 Section label:
 
-> For your team
+> Contact ERGuide
 
 Heading:
 
-> One case record, useful to everyone involved
-
-Introduction:
-
-> Each role gets the information and control it needs, subject to the access set for that role.
-
-Role one:
-
-> Executive team
->
-> See case volumes, progress and recurring patterns without chasing individual files.
-
-Role two:
-
-> HR/ER
->
-> Guide the process, keep the evidence together and report from a structured record.
-
-Role three:
-
-> Line managers
->
-> Find the right guidance and follow a clear process when an issue arises.
-
-Role four:
-
-> Employees
->
-> Use accessible reporting channels and see relevant progress where access allows.
-
-## Product overview
-
-Section label:
-
-> The platform
-
-Heading:
-
-> See how ERGuide works in practice
-
-Introduction:
-
-> Follow the path from finding guidance to capturing evidence, completing the process and reporting from the case record.
-
-Play button:
-
-> Play the ERGuide product overview
-
-The current video was produced in 2021 and contains old wording and contact details. It should be replaced with a current walkthrough. The surrounding copy does not repeat its absolute compliance claims.
-
-## Governance and insight
-
-Section label:
-
-> Governance and insight
-
-Heading:
-
-> Create the record while the work is happening
-
-Introduction:
-
-> Each action adds to the case history, so HR/ER does not have to rebuild it later.
-
-Card one:
-
-> Access by role
->
-> Give each participant the access they need for their part of the case.
-
-Card two:
-
-> A traceable case history
->
-> Keep actions, documents, evidence, signatures, status changes and outcomes together.
-
-Card three:
-
-> Reporting from the record
->
-> Review case volumes, status, ageing and recurring themes from information captured during the process.
-
-## Organisation fit
-
-Section label:
-
-> Built for your organisation
-
-Heading:
-
-> Configure ERGuide around the way your team handles ER matters
-
-Paragraph one:
-
-> Set up ERGuide around approved policies, forms, roles and priority processes. Start with the cases your team handles most often, then add more modules as needed.
-
-Paragraph two:
-
-> ERGuide was founded in Stellenbosch in 2016. It brings practical employment-relations guidance, case workflows and reporting into one platform.
-
-Badge:
-
-> Founded in Stellenbosch in 2016
-
-The founder photograph and biography are removed at the user's request.
-
-The second column becomes a workflow-fit panel:
-
-> What we map with you
->
-> We look at your current process, the people involved and the records you need to keep. The demo then focuses on a relevant workflow instead of a generic product tour.
->
-> Current process
->
-> Priority cases
->
-> Roles and access
->
-> Reporting needs
-
-## Conversion banner
-
-Section label:
-
-> Workflow-fit demo
-
-Heading:
-
-> Make the next case easier to manage and easier to explain
+> Let's talk about the way your team handles ER matters
 
 Supporting copy:
 
-> In a workflow-fit session, we look at your current process, identify the cases you want to handle first and show how ERGuide can support the workflow, record and reporting you need.
+> Tell us which processes you want to improve, and we'll tailor the conversation to your workflow, forms and reporting needs.
 
-Primary action:
-
-> Book a workflow-fit demo
-
-Secondary action:
+Telephone action:
 
 > Call ERGuide: 082 451 1991
 
-Contact details:
+Email:
 
-- info@erguide.co.za
-- 082 451 1991
-- 15 Quantum Street, Avon Place, Unit 4, Techno Park, Stellenbosch, 7600
+> info@erguide.co.za
 
-These details were cross-checked against the public ERGuide website on 19 August 2026.
+Form heading:
+
+> Send an enquiry
+
+Form fields:
+
+- Full name
+- Work email
+- Organisation
+- How can we help?
+
+Required fields are marked with an asterisk.
+
+Privacy helper:
+
+> Please don't include employee names or confidential case details. See our privacy policy.
+
+Submit action:
+
+> Continue in your email app
+
+Form note:
+
+> Review your message in your email app before sending.
 
 ## Footer
 
-Brand statement:
+Brand line:
 
-> ERGuide connects employment-relations guidance, guided processes and reporting in one structured case record.
+> Digital case management and guided employment-relations processes for modern organisations.
 
 Product links:
 
+- The solution
+- Features
 - How it works
-- Processes
-- Product overview
+- ERGuide Online
 - Log in
-- Book a demo
 
 Company links:
 
-- About ERGuide
-- Contact
+- Contact ERGuide
+- Email us
+- 082 451 1991
 - Discovery portal
 
-Legal links:
+Legal link:
 
 - Privacy policy
 
-The Terms of Service link is removed until a real legal destination exists.
+Copyright:
 
-Bottom line:
+> © [current year] ERGuide. All rights reserved. Stellenbosch, South Africa.
 
-> © 2026 ERGuide. All rights reserved. Stellenbosch, South Africa.
+## Publication and product checks
 
-## Other information updates
-
-- Replace the temporary canonical and social domain with `https://www.erguide.digital/`.
-- Keep the existing application login URL until a replacement is supplied.
-- Change structured-data platform support from `Web, iOS, Android` to `Web`.
-- Add the verified phone number and Stellenbosch address to structured data.
-- Update `robots.txt` to the public domain and add `sitemap.xml`.
-- Use the same desktop and mobile navigation labels.
-- Update accessible section labels, video labels and link wording with the visible copy.
-- Keep the Africa globe as a visual element, but do not use the highlighted countries as a claim of legal or product coverage.
-
-## Publication checks still needed
-
-- Confirm the current customer relationships and logo permissions.
-- Confirm the exact live module names.
-- Confirm how company policies are searched in the product.
-- Confirm current role permissions, approvals and notification options.
-- Replace or re-edit the 2021 product video.
-- Confirm whether the Discovery-specific portal should remain in the public footer.
-- Add a Terms of Service destination before restoring that link.
+- Confirm that every client logo may still be shown publicly.
+- Confirm the exact live module names and availability.
+- Confirm that company policies are included in platform search.
+- Confirm current digital-signature, storage, reporting and template capabilities.
+- Confirm country coverage before naming individual African jurisdictions.
+- Replace or re-edit the existing 2021 product video if it contains outdated wording, branding or contact information.
+- Add a live form endpoint or form service if enquiries must submit directly from the website. The current static form prepares an email in the visitor's email application.
+- Add a Terms of Service link only when a real legal destination is available.
+- Keep the globe visual but do not use highlighted countries as proof of legal coverage.
+- Confirm that `https://er.phifilms.co.za/login` is the intended production login address before launch.

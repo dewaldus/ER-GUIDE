@@ -27,10 +27,22 @@
     window.location.href = nextUrl.toString();
   };
 
-  var controller = new registry.GlobeController();
-  controller.init();
+  var controller = null;
+
+  function startGlobe() {
+    if (controller && controller.earth) return;
+    controller = new registry.GlobeController();
+    controller.init();
+  }
+
+  startGlobe();
 
   document.addEventListener('visibilitychange', function () {
-    if (document.hidden) controller.destroy();
+    if (document.hidden) {
+      if (controller) controller.destroy();
+      return;
+    }
+
+    startGlobe();
   });
 })();

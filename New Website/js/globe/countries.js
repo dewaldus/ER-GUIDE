@@ -7,7 +7,6 @@
   var countries = [
     { id: 'south-africa', name: 'South Africa', order: 1, lat: -28.347968, lng: 25.235125, assetKey: 'south_africa', assetPath: 'assets/globe/south_africa.svg', scale: 1.9 },
     { id: 'zambia', name: 'Zambia', order: 2, lat: -12.888319, lng: 28.471788, assetKey: 'zambia', assetPath: 'assets/globe/zambia.svg', scale: 1.8 },
-    { id: 'south-africa', name: 'South Africa', order: 1, lat: -28.347968, lng: 25.435125, assetKey: 'south_africa', assetPath: 'assets/globe/south_africa.svg', scale: 2 },
     { id: 'uganda', name: 'Uganda', order: 3, lat: 1.23389, lng: 30.49063, assetKey: 'uganda', assetPath: 'assets/globe/uganda.svg', scale: 1.2 },
     { id: 'tanzania', name: 'Tanzania', order: 4, lat: -6.540242, lng: 36.499742, assetKey: 'tanzania', assetPath: 'assets/globe/tanzania.svg', scale: 1.2 },
     { id: 'mauritius', name: 'Mauritius', order: 5, lat: -20.288987, lng: 57.604131, assetKey: 'mauritius', assetPath: 'assets/globe/mauritius.svg', scale: 0.3 },
@@ -22,7 +21,7 @@
     { id: 'lesotho', name: 'Lesotho', order: 14, lat: -29.64702, lng: 28.255827, assetKey: 'lesotho', assetPath: 'assets/globe/lesotho.svg', scale: 0.3 },
     { id: 'botswana', name: 'Botswana', order: 15, lat: -23.653204, lng: 23.936888, assetKey: 'botswana', assetPath: 'assets/globe/botswana.svg', scale: 1.4 },
     { id: 'nigeria', name: 'Nigeria', order: 16, lat: 8.9999, lng: 9.336075, assetKey: 'nigeria', assetPath: 'assets/globe/nigeria.svg', scale: 1.54 },
-    { id: 'mozambique', name: 'Mozambique', order: 17, lat: -18.435608, lng: 36.312983, assetKey: 'mozambique', assetPath: 'assets/globe/mozambique.svg', scale: 2. }
+    { id: 'mozambique', name: 'Mozambique', order: 17, lat: -18.435608, lng: 36.312983, assetKey: 'mozambique', assetPath: 'assets/globe/mozambique.svg', scale: 2 }
   ];
 
   window.ERGuideGlobe.countries = countries.map(function (country) {
