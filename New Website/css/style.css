@@ -1007,12 +1007,43 @@ ul, ol { list-style: none; }
   line-height: 1.25;
 }
 
-.workflow-journey-header > p {
+.workflow-journey-aside {
   max-width: 430px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--space-3);
+}
+
+.workflow-journey-aside p {
   color: var(--color-muted);
   font-size: var(--text-sm);
   line-height: 1.65;
 }
+
+.workflow-toggle {
+  display: inline-flex;
+  min-height: 36px;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 0.45rem 0.75rem;
+  border: 1px solid rgba(1,122,52,0.22);
+  border-radius: var(--radius-full);
+  background: var(--color-primary-light);
+  color: var(--color-primary-dark);
+  font-size: var(--text-xs);
+  font-weight: 700;
+  transition: background-color var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast);
+}
+
+.workflow-toggle[hidden] { display: none; }
+.workflow-toggle:hover {
+  border-color: rgba(1,122,52,0.48);
+  background: #d8f3e4;
+}
+.workflow-toggle-play { display: none; }
+.workflow-toggle[aria-pressed="true"] .workflow-toggle-pause { display: none; }
+.workflow-toggle[aria-pressed="true"] .workflow-toggle-play { display: block; }
 
 .workflow-rail {
   display: grid;
@@ -1031,6 +1062,7 @@ ul, ol { list-style: none; }
   border: 1px solid var(--color-border);
   border-radius: var(--radius-xl);
   background: var(--color-bg);
+  transition: background-color 280ms ease, border-color 280ms ease, box-shadow 280ms ease, transform 280ms ease;
 }
 
 .workflow-stage:not(:last-child)::after {
@@ -1041,6 +1073,7 @@ ul, ol { list-style: none; }
   width: 2px;
   height: calc(var(--space-4) + 1px);
   background: rgba(1,149,64,0.35);
+  transition: background-color 280ms ease, box-shadow 280ms ease;
 }
 
 .workflow-number {
@@ -1050,28 +1083,44 @@ ul, ol { list-style: none; }
   font-size: var(--text-xs);
   font-weight: 800;
   letter-spacing: 0.05em;
+  transition: color 260ms ease;
 }
 
 .workflow-stage strong {
   color: var(--color-secondary);
   font-size: var(--text-xl);
   line-height: 1.2;
+  transition: color 260ms ease;
 }
 
 .workflow-stage p {
   color: var(--color-muted);
   font-size: var(--text-sm);
   line-height: 1.55;
+  transition: color 260ms ease;
 }
 
-.workflow-stage-highlight {
+.workflow-stage-highlight,
+.workflow-stage-active {
   border-color: var(--color-secondary);
   background: var(--color-secondary);
 }
 
-.workflow-stage-highlight .workflow-number { color: #53e59b; }
-.workflow-stage-highlight strong { color: #fff; }
-.workflow-stage-highlight p { color: rgba(255,255,255,0.76); }
+.workflow-stage-highlight .workflow-number,
+.workflow-stage-active .workflow-number { color: #53e59b; }
+.workflow-stage-highlight strong,
+.workflow-stage-active strong { color: #fff; }
+.workflow-stage-highlight p,
+.workflow-stage-active p { color: rgba(255,255,255,0.8); }
+
+.workflow-stage-active {
+  box-shadow: 0 10px 24px rgba(15,35,58,0.14);
+}
+
+.workflow-stage-active:not(:last-child)::after {
+  background: #53e59b;
+  box-shadow: 0 0 10px rgba(83,229,155,0.48);
+}
 
 @media (min-width: 768px) {
   .workflow-journey-header {
@@ -1644,28 +1693,52 @@ ul, ol { list-style: none; }
   transform: translateY(0);
 }
 
-/* Restrained fold-out motion for solution and process cards */
-.solution-grid .feature-card.reveal,
-.process-grid .feature-card.reveal {
+/* Separate transform layers keep reveal, scroll depth and hover independent */
+.scroll-card-shell,
+.scroll-card-motion {
+  display: flex;
+  width: 100%;
+  min-width: 0;
+  transform-style: preserve-3d;
+}
+
+.scroll-card-surface {
+  min-width: 0;
+  height: 100%;
+  flex: 1;
+  backface-visibility: hidden;
+}
+
+.solution-grid .scroll-card-shell.reveal,
+.process-grid .scroll-card-shell.reveal {
   transform-origin: 50% 0;
   transform: perspective(900px) translateY(12px) rotateX(-3deg) scale(0.99);
   transition:
     opacity 440ms ease,
-    transform 520ms cubic-bezier(0.22, 1, 0.36, 1),
-    background-color var(--transition-base),
-    border-color var(--transition-base),
-    box-shadow var(--transition-base);
+    transform 520ms cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-.solution-grid .feature-card.reveal:nth-child(even),
-.process-grid .feature-card.reveal:nth-child(even) {
-  transition-delay: 45ms, 45ms, 0ms, 0ms, 0ms;
+.solution-grid .scroll-card-shell.reveal:nth-child(even),
+.process-grid .scroll-card-shell.reveal:nth-child(even) {
+  transition-delay: 45ms, 45ms;
 }
 
-.solution-grid .feature-card.reveal.visible,
-.process-grid .feature-card.reveal.visible {
+.solution-grid .scroll-card-shell.reveal.visible,
+.process-grid .scroll-card-shell.reveal.visible {
   opacity: 1;
   transform: perspective(900px) translateY(0) rotateX(0) scale(1);
+}
+
+.scroll-card-motion.scroll-3d-live {
+  transform:
+    perspective(1100px)
+    translate3d(
+      0,
+      var(--scroll-depth-y, 0px),
+      var(--scroll-depth-z, 0px)
+    )
+    rotateX(var(--scroll-depth-rx, 0deg))
+    rotateY(var(--scroll-depth-ry, 0deg));
 }
 
 /* The workflow steps settle in sequence when the journey enters view */
@@ -1674,8 +1747,16 @@ ul, ol { list-style: none; }
   transform: translateY(8px) scale(0.99);
   transition:
     opacity 320ms ease,
-    transform 360ms cubic-bezier(0.22, 1, 0.36, 1);
-  transition-delay: var(--workflow-delay, 120ms);
+    transform 360ms cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 280ms ease,
+    border-color 280ms ease,
+    box-shadow 280ms ease;
+  transition-delay:
+    var(--workflow-delay, 120ms),
+    var(--workflow-delay, 120ms),
+    0ms,
+    0ms,
+    0ms;
 }
 
 .workflow-journey.workflow-motion-ready.workflow-visible .workflow-stage {
@@ -1709,12 +1790,6 @@ ul, ol { list-style: none; }
 }
 
 @media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
-  .solution-grid .feature-card.reveal.visible:hover,
-  .process-grid .feature-card.reveal.visible:hover {
-    transform: perspective(900px) translateY(-3px) rotateX(0) scale(1);
-    transition-delay: 0ms;
-  }
-
   .how-grid .feature-card.reveal.visible:hover {
     transform: translateY(-4px);
   }
@@ -1763,11 +1838,25 @@ ul, ol { list-style: none; }
   }
   .logo-group + .logo-group { display: none; }
   .reveal { opacity: 1; transform: none; transition-delay: 0ms !important; }
+  .solution-grid .scroll-card-shell.reveal,
+  .solution-grid .scroll-card-shell.reveal.visible,
+  .process-grid .scroll-card-shell.reveal,
+  .process-grid .scroll-card-shell.reveal.visible {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+  .scroll-card-motion,
+  .scroll-card-motion.scroll-3d-live {
+    transform: none;
+  }
   .workflow-journey.workflow-motion-ready .workflow-stage {
     opacity: 1;
     transform: none;
     transition: none;
   }
+  .workflow-toggle { display: none !important; }
+  .workflow-stage-active { box-shadow: none; }
   .hero-badge,
   .hero-title-line1,
   .hero-title .highlight,

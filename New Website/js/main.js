@@ -132,6 +132,132 @@
     counterEls.forEach(el => counterObserver.observe(el));
   }
 
+  /* --- Scroll-reactive depth for solution and process cards --- */
+  const motionPreference = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const scrollDepthSourceCards = Array.from(document.querySelectorAll(
+    '.solution-grid .feature-card, .process-grid .feature-card'
+  ));
+  const scrollDepthItems = scrollDepthSourceCards.map(card => {
+    const grid = card.parentElement;
+    const cardIndex = Array.from(grid.children).indexOf(card);
+    const shell = document.createElement('div');
+    const motionLayer = document.createElement('div');
+
+    shell.className = 'scroll-card-shell reveal';
+    motionLayer.className = 'scroll-card-motion';
+    grid.insertBefore(shell, card);
+    shell.appendChild(motionLayer);
+    motionLayer.appendChild(card);
+    card.classList.remove('reveal');
+    card.classList.add('scroll-card-surface');
+
+    return {
+      card,
+      shell,
+      motionLayer,
+      side: cardIndex % 2 === 0 ? -1 : 1
+    };
+  });
+  let scrollDepthFrame = null;
+  let scrollDepthSettleTimer = null;
+  let scrollDepthLastY = window.scrollY;
+  let scrollDepthEnabled = false;
+
+  function clampMotion(value, min, max) {
+    return Math.min(max, Math.max(min, value));
+  }
+
+  function resetScrollDepth() {
+    scrollDepthItems.forEach(({ motionLayer }) => {
+      motionLayer.style.removeProperty('--scroll-depth-y');
+      motionLayer.style.removeProperty('--scroll-depth-z');
+      motionLayer.style.removeProperty('--scroll-depth-rx');
+      motionLayer.style.removeProperty('--scroll-depth-ry');
+    });
+  }
+
+  function updateScrollDepth() {
+    scrollDepthFrame = null;
+    if (!scrollDepthEnabled || motionPreference.matches) return;
+
+    const viewportHeight = window.innerHeight;
+    const strength = window.innerWidth < 768 ? 0.55 : 1;
+    const scrollDelta = clampMotion(window.scrollY - scrollDepthLastY, -20, 20);
+    scrollDepthLastY = window.scrollY;
+    const measured = scrollDepthItems.map(item => ({
+      ...item,
+      rect: item.shell.getBoundingClientRect()
+    }));
+
+    measured.forEach(({ motionLayer, side, rect }) => {
+      if (rect.bottom < -160 || rect.top > viewportHeight + 160) return;
+
+      const cardCentre = rect.top + (rect.height / 2);
+      const range = (viewportHeight + rect.height) / 2;
+      const progress = clampMotion((cardCentre - (viewportHeight / 2)) / range, -1, 1);
+      const rotateX = clampMotion((-progress * 2.4) + (scrollDelta * 0.018), -2.8, 2.8) * strength;
+      const rotateY = side * progress * 0.9 * strength;
+      const translateY = progress * 6 * strength;
+      const translateZ = -Math.abs(progress) * 8 * strength;
+
+      motionLayer.style.setProperty('--scroll-depth-y', `${translateY.toFixed(2)}px`);
+      motionLayer.style.setProperty('--scroll-depth-z', `${translateZ.toFixed(2)}px`);
+      motionLayer.style.setProperty('--scroll-depth-rx', `${rotateX.toFixed(2)}deg`);
+      motionLayer.style.setProperty('--scroll-depth-ry', `${rotateY.toFixed(2)}deg`);
+    });
+  }
+
+  function scheduleScrollDepth() {
+    if (scrollDepthFrame === null && scrollDepthEnabled && !motionPreference.matches) {
+      scrollDepthFrame = requestAnimationFrame(updateScrollDepth);
+    }
+  }
+
+  function handleScrollDepth() {
+    scheduleScrollDepth();
+    window.clearTimeout(scrollDepthSettleTimer);
+    scrollDepthSettleTimer = window.setTimeout(() => {
+      scrollDepthLastY = window.scrollY;
+      scheduleScrollDepth();
+    }, 90);
+  }
+
+  function enableScrollDepth() {
+    if (scrollDepthEnabled || !scrollDepthItems.length || motionPreference.matches) return;
+    scrollDepthEnabled = true;
+    scrollDepthLastY = window.scrollY;
+    window.addEventListener('scroll', handleScrollDepth, { passive: true });
+    window.addEventListener('resize', scheduleScrollDepth);
+    scheduleScrollDepth();
+  }
+
+  function disableScrollDepth() {
+    if (!scrollDepthEnabled) {
+      resetScrollDepth();
+      return;
+    }
+
+    scrollDepthEnabled = false;
+    window.removeEventListener('scroll', handleScrollDepth);
+    window.removeEventListener('resize', scheduleScrollDepth);
+    window.clearTimeout(scrollDepthSettleTimer);
+    if (scrollDepthFrame !== null) cancelAnimationFrame(scrollDepthFrame);
+    scrollDepthFrame = null;
+    resetScrollDepth();
+  }
+
+  if (!motionPreference.matches) enableScrollDepth();
+
+  const handleScrollMotionPreference = event => {
+    if (event.matches) disableScrollDepth();
+    else enableScrollDepth();
+  };
+  if (typeof motionPreference.addEventListener === 'function') {
+    motionPreference.addEventListener('change', handleScrollMotionPreference);
+  } else {
+    motionPreference.addListener(handleScrollMotionPreference);
+  }
+
   /* --- Scroll reveal --- */
   const revealEls = document.querySelectorAll('.reveal');
   if (revealEls.length) {
@@ -139,6 +265,13 @@
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
+          if (entry.target.classList.contains('scroll-card-shell')) {
+            window.setTimeout(() => {
+              const motionLayer = entry.target.querySelector('.scroll-card-motion');
+              if (motionLayer) motionLayer.classList.add('scroll-3d-live');
+              scheduleScrollDepth();
+            }, 540);
+          }
           revealObserver.unobserve(entry.target);
         }
       });
@@ -147,27 +280,155 @@
     revealEls.forEach(el => revealObserver.observe(el));
   }
 
-  /* --- Connected workflow: staged entry reveal --- */
+  /* --- Connected workflow: staged entry and looping active step --- */
   const workflowJourney = document.querySelector('.workflow-journey');
   if (workflowJourney) {
-    const workflowStages = workflowJourney.querySelectorAll('.workflow-stage');
+    const workflowStages = Array.from(workflowJourney.querySelectorAll('.workflow-stage'));
+    const workflowRail = workflowJourney.querySelector('.workflow-rail');
+    const workflowToggle = document.getElementById('workflowToggle');
+    const workflowToggleText = workflowToggle ? workflowToggle.querySelector('span') : null;
 
     if (workflowStages.length) {
+      let workflowInterval = null;
+      let workflowStartTimer = null;
+      let workflowIndex = -1;
+      let workflowInView = false;
+      let workflowHoverPaused = false;
+      let workflowUserPaused = false;
+
       workflowJourney.classList.add('workflow-motion-ready');
       workflowStages.forEach((stage, index) => {
         stage.style.setProperty('--workflow-delay', `${120 + (index * 65)}ms`);
       });
 
+      function clearWorkflowTimers() {
+        window.clearTimeout(workflowStartTimer);
+        window.clearInterval(workflowInterval);
+        workflowStartTimer = null;
+        workflowInterval = null;
+      }
+
+      function setWorkflowActive(index) {
+        workflowStages.forEach((stage, stageIndex) => {
+          stage.classList.toggle('workflow-stage-active', stageIndex === index);
+        });
+        workflowIndex = index;
+      }
+
+      function updateWorkflowToggle() {
+        if (!workflowToggle) return;
+        workflowToggle.setAttribute('aria-pressed', String(workflowUserPaused));
+        workflowToggle.setAttribute(
+          'aria-label',
+          workflowUserPaused ? 'Play workflow animation' : 'Pause workflow animation'
+        );
+        if (workflowToggleText) {
+          workflowToggleText.textContent = workflowUserPaused ? 'Play animation' : 'Pause animation';
+        }
+      }
+
+      function prepareWorkflowLoop() {
+        workflowJourney.classList.add('workflow-loop-ready');
+        workflowStages.forEach(stage => stage.classList.remove('workflow-stage-highlight'));
+        if (workflowToggle) workflowToggle.hidden = false;
+        updateWorkflowToggle();
+      }
+
+      function restoreWorkflowFallback() {
+        clearWorkflowTimers();
+        workflowJourney.classList.remove('workflow-loop-ready');
+        workflowStages.forEach(stage => stage.classList.remove('workflow-stage-active', 'workflow-stage-highlight'));
+        if (workflowStages[2]) workflowStages[2].classList.add('workflow-stage-highlight');
+        workflowIndex = -1;
+        workflowUserPaused = false;
+        if (workflowToggle) workflowToggle.hidden = true;
+        updateWorkflowToggle();
+      }
+
+      function workflowCanPlay() {
+        return workflowInView
+          && !workflowHoverPaused
+          && !workflowUserPaused
+          && !motionPreference.matches
+          && !document.hidden;
+      }
+
+      function beginWorkflowLoop(resetToStart) {
+        clearWorkflowTimers();
+        if (!workflowCanPlay()) return;
+
+        if (resetToStart || workflowIndex < 0) setWorkflowActive(0);
+        workflowInterval = window.setInterval(() => {
+          setWorkflowActive((workflowIndex + 1) % workflowStages.length);
+        }, window.innerWidth < 960 ? 2400 : 2000);
+      }
+
+      function queueWorkflowLoop(resetToStart, delay) {
+        clearWorkflowTimers();
+        if (!workflowCanPlay()) return;
+        workflowStartTimer = window.setTimeout(() => beginWorkflowLoop(resetToStart), delay);
+      }
+
+      if (!motionPreference.matches) prepareWorkflowLoop();
+
       const workflowObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             entry.target.classList.add('workflow-visible');
-            workflowObserver.unobserve(entry.target);
+            workflowInView = true;
+            if (!motionPreference.matches) {
+              prepareWorkflowLoop();
+              queueWorkflowLoop(true, 760);
+            }
+          } else {
+            workflowInView = false;
+            clearWorkflowTimers();
+            workflowStages.forEach(stage => stage.classList.remove('workflow-stage-active'));
+            workflowIndex = -1;
           }
         });
       }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
 
       workflowObserver.observe(workflowJourney);
+
+      if (workflowRail) {
+        workflowRail.addEventListener('pointerenter', () => {
+          workflowHoverPaused = true;
+          clearWorkflowTimers();
+        });
+        workflowRail.addEventListener('pointerleave', () => {
+          workflowHoverPaused = false;
+          queueWorkflowLoop(false, 240);
+        });
+      }
+
+      if (workflowToggle) {
+        workflowToggle.addEventListener('click', () => {
+          workflowUserPaused = !workflowUserPaused;
+          updateWorkflowToggle();
+          if (workflowUserPaused) clearWorkflowTimers();
+          else queueWorkflowLoop(false, 120);
+        });
+      }
+
+      document.addEventListener('visibilitychange', () => {
+        if (document.hidden) clearWorkflowTimers();
+        else queueWorkflowLoop(false, 300);
+      });
+
+      const handleWorkflowMotionPreference = event => {
+        if (event.matches) {
+          restoreWorkflowFallback();
+        } else {
+          prepareWorkflowLoop();
+          queueWorkflowLoop(true, 500);
+        }
+      };
+      if (typeof motionPreference.addEventListener === 'function') {
+        motionPreference.addEventListener('change', handleWorkflowMotionPreference);
+      } else {
+        motionPreference.addListener(handleWorkflowMotionPreference);
+      }
     }
   }
 

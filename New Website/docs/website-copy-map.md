@@ -11,7 +11,7 @@ This document is the content source of truth for the updated ERGuide homepage. T
 - Reserve visible numbering for the five-stage workflow so the supporting benefits and capabilities do not appear to be competing sequences.
 - Keep the existing client logos and use a slower, smoother marquee animation.
 - Keep the globe in its current hero position and preserve its interaction, without floating text cards over it.
-- Keep card motion restrained: short scroll reveals, a sequential workflow entrance and subtle pointer hover feedback on capability cards.
+- Keep card motion restrained: subtle scroll-reactive depth for solution and process cards, a five-step workflow highlight loop with a pause control, and pointer hover feedback on capability cards. Reduced-motion mode keeps the cards still and uses Capture as the workflow's static focal point.
 - Remove Dieter's photograph and all founder biography content.
 - Use plain South African English and short, direct sentences.
 - Avoid promises of guaranteed compliance, fairness, cost savings or legal outcomes.
@@ -399,4 +399,4 @@ Copyright:
 - Add a live form endpoint or form service if enquiries must submit directly from the website. The current static form prepares an email in the visitor's email application.
 - Add a Terms of Service link only when a real legal destination is available.
 - Keep the globe visual but do not use highlighted countries as proof of legal coverage.
-- Confirm that `https://er.phifilms.co.za/login` is the intended production login address before launch.
+- Production login address: `https://erguide.co.za/login`.
