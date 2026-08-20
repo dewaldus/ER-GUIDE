@@ -660,56 +660,6 @@ ul, ol { list-style: none; }
   height: calc(100% - 36px);
 }
 
-.hero-floating-card {
-  position: absolute;
-  background: rgba(13, 25, 16, 0.75);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-radius: var(--radius-lg);
-  padding: var(--space-3) var(--space-4);
-  box-shadow: 0 4px 24px rgba(0,0,0,0.4);
-  display: flex;
-  align-items: center;
-  gap: var(--space-3);
-  font-size: var(--text-sm);
-  font-weight: 600;
-  white-space: nowrap;
-  border: 1px solid rgba(2,230,127,0.25);
-  color: #ffffff;
-}
-
-.hero-floating-card.card-1 {
-  bottom: 64px;
-  left: 16px;
-}
-
-.hero-floating-card.card-2 {
-  top: 24px;
-  right: 96px;
-}
-
-.hero-floating-card .icon-dot {
-  width: 36px; height: 36px;
-  border-radius: var(--radius-md);
-  display: flex; align-items: center; justify-content: center;
-  flex-shrink: 0;
-}
-
-.card-1 .icon-dot { background: rgba(1,149,64,0.2); color: #02e67f; }
-.card-2 .icon-dot { background: rgba(1,149,64,0.2); color: #02e67f; }
-
-@media (max-width: 1023px) {
-  .hero-floating-card { display: none; }
-}
-
-/* Floating cards are decorative — behind the globe so they don't block drag */
-@media (min-width: 1024px) {
-  .hero-floating-card {
-    pointer-events: none;
-    z-index: 9;
-  }
-}
-
 /* --- Hero entrance animations --- */
 
 @keyframes hero-rise {
@@ -793,23 +743,6 @@ ul, ol { list-style: none; }
 /* Trust line — fades in only (no Y movement — calms the sequence) */
 .hero-trust {
   animation: hero-fade 400ms ease 820ms both;
-}
-
-/* Floating cards — slide in from their respective sides */
-.hero-floating-card.card-2 {
-  animation: hero-card-right 500ms cubic-bezier(0.22, 1, 0.36, 1) 950ms both;
-}
-.hero-floating-card.card-1 {
-  animation: hero-card-left 500ms cubic-bezier(0.22, 1, 0.36, 1) 1060ms both;
-}
-
-@keyframes hero-card-right {
-  from { opacity: 0; transform: translate(24px, -6px); }
-  to   { opacity: 1; transform: translate(0, 0); }
-}
-@keyframes hero-card-left {
-  from { opacity: 0; transform: translate(-24px, 6px); }
-  to   { opacity: 1; transform: translate(0, 0); }
 }
 
 /* --- Trusted By --- */
@@ -1030,15 +963,16 @@ ul, ol { list-style: none; }
   justify-content: center;
   border-radius: var(--radius-lg);
   background: var(--color-primary-light);
+  border: 1px solid rgba(1,122,52,0.12);
+  color: var(--color-primary-dark);
+  flex-shrink: 0;
+  transition: background-color 220ms ease, color 220ms ease, border-color 220ms ease, transform 220ms ease, box-shadow 220ms ease;
 }
 
-.feature-step::before {
-  content: '';
-  width: 12px;
-  height: 12px;
-  border-radius: var(--radius-full);
-  background: var(--color-primary-dark);
-  box-shadow: 0 0 0 6px rgba(1,122,52,0.12);
+.feature-step svg {
+  width: 22px;
+  height: 22px;
+  transition: transform 220ms ease;
 }
 
 .workflow-journey {
@@ -1185,6 +1119,10 @@ ul, ol { list-style: none; }
 }
 
 .showcase-video { margin-top: var(--space-12); }
+
+#erguide-online-video {
+  scroll-margin-top: calc(var(--nav-height) + var(--space-4));
+}
 
 @media (min-width: 768px) {
   .online-grid { grid-template-columns: repeat(3, 1fr); }
@@ -1706,6 +1644,90 @@ ul, ol { list-style: none; }
   transform: translateY(0);
 }
 
+/* Restrained fold-out motion for solution and process cards */
+.solution-grid .feature-card.reveal,
+.process-grid .feature-card.reveal {
+  transform-origin: 50% 0;
+  transform: perspective(900px) translateY(12px) rotateX(-3deg) scale(0.99);
+  transition:
+    opacity 440ms ease,
+    transform 520ms cubic-bezier(0.22, 1, 0.36, 1),
+    background-color var(--transition-base),
+    border-color var(--transition-base),
+    box-shadow var(--transition-base);
+}
+
+.solution-grid .feature-card.reveal:nth-child(even),
+.process-grid .feature-card.reveal:nth-child(even) {
+  transition-delay: 45ms, 45ms, 0ms, 0ms, 0ms;
+}
+
+.solution-grid .feature-card.reveal.visible,
+.process-grid .feature-card.reveal.visible {
+  opacity: 1;
+  transform: perspective(900px) translateY(0) rotateX(0) scale(1);
+}
+
+/* The workflow steps settle in sequence when the journey enters view */
+.workflow-journey.workflow-motion-ready .workflow-stage {
+  opacity: 0;
+  transform: translateY(8px) scale(0.99);
+  transition:
+    opacity 320ms ease,
+    transform 360ms cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--workflow-delay, 120ms);
+}
+
+.workflow-journey.workflow-motion-ready.workflow-visible .workflow-stage {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+/* Capability cards: stronger pointer feedback without implying a click */
+.how-grid .feature-card.reveal {
+  transition:
+    opacity 420ms ease,
+    transform 320ms cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 220ms ease,
+    border-color 220ms ease,
+    box-shadow 220ms ease;
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .how-grid .feature-card.reveal.visible:hover {
+    border-color: rgba(1,122,52,0.5);
+    background: var(--color-surface);
+    box-shadow: 0 16px 34px rgba(15,35,58,0.13);
+  }
+
+  .how-grid .feature-card:hover .feature-step {
+    border-color: var(--color-secondary);
+    background: var(--color-secondary);
+    color: #fff;
+    box-shadow: 0 8px 18px rgba(15,35,58,0.16);
+  }
+}
+
+@media (hover: hover) and (pointer: fine) and (prefers-reduced-motion: no-preference) {
+  .solution-grid .feature-card.reveal.visible:hover,
+  .process-grid .feature-card.reveal.visible:hover {
+    transform: perspective(900px) translateY(-3px) rotateX(0) scale(1);
+    transition-delay: 0ms;
+  }
+
+  .how-grid .feature-card.reveal.visible:hover {
+    transform: translateY(-4px);
+  }
+
+  .how-grid .feature-card:hover .feature-step {
+    transform: translateY(-2px) scale(1.04);
+  }
+
+  .how-grid .feature-card:hover .feature-step svg {
+    transform: scale(1.06);
+  }
+}
+
 /* --- Focus states (accessibility) --- */
 *:focus-visible {
   outline: 2px solid var(--color-primary);
@@ -1740,13 +1762,17 @@ ul, ol { list-style: none; }
     padding: 0 var(--space-4);
   }
   .logo-group + .logo-group { display: none; }
-  .reveal { opacity: 1; transform: none; }
+  .reveal { opacity: 1; transform: none; transition-delay: 0ms !important; }
+  .workflow-journey.workflow-motion-ready .workflow-stage {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
   .hero-badge,
   .hero-title-line1,
   .hero-title .highlight,
   .hero-title .highlight::after,
   .hero-actions .btn,
-  .hero-trust,
-  .hero-floating-card { animation: none; opacity: 1; transform: none; color: inherit; }
+  .hero-trust { animation: none; opacity: 1; transform: none; color: inherit; }
   .hero-title .highlight { color: var(--color-primary); }
 }

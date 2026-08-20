@@ -10,7 +10,8 @@ This document is the content source of truth for the updated ERGuide homepage. T
 - Keep the three product ideas visible in the hero: Efficient, Consistency and Cost Effective.
 - Reserve visible numbering for the five-stage workflow so the supporting benefits and capabilities do not appear to be competing sequences.
 - Keep the existing client logos and use a slower, smoother marquee animation.
-- Keep the globe in its current hero position and preserve its interaction.
+- Keep the globe in its current hero position and preserve its interaction, without floating text cards over it.
+- Keep card motion restrained: short scroll reveals, a sequential workflow entrance and subtle pointer hover feedback on capability cards.
 - Remove Dieter's photograph and all founder biography content.
 - Use plain South African English and short, direct sentences.
 - Avoid promises of guaranteed compliance, fairness, cost savings or legal outcomes.
@@ -97,21 +98,13 @@ Secondary action:
 
 > See how it works
 
+This action links directly to the ERGuide Online product video.
+
 Audience line:
 
 > Built for HR/ER teams and the managers who handle cases day to day.
 
-Globe card one:
-
-> Guided process
->
-> Clear next steps
-
-Globe card two:
-
-> Digital record
->
-> Case information together
+The globe remains unobstructed; there are no floating copy cards in the hero visual.
 
 ## Client-logo strip
 

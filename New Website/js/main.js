@@ -5,6 +5,7 @@
    - Screenshot tabs
    - Stat counters (IntersectionObserver)
    - Scroll reveal
+   - Connected workflow reveal
    ============================================= */
 
 (function () {
@@ -144,6 +145,30 @@
     }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
     revealEls.forEach(el => revealObserver.observe(el));
+  }
+
+  /* --- Connected workflow: staged entry reveal --- */
+  const workflowJourney = document.querySelector('.workflow-journey');
+  if (workflowJourney) {
+    const workflowStages = workflowJourney.querySelectorAll('.workflow-stage');
+
+    if (workflowStages.length) {
+      workflowJourney.classList.add('workflow-motion-ready');
+      workflowStages.forEach((stage, index) => {
+        stage.style.setProperty('--workflow-delay', `${120 + (index * 65)}ms`);
+      });
+
+      const workflowObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('workflow-visible');
+            workflowObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
+
+      workflowObserver.observe(workflowJourney);
+    }
   }
 
   /* --- Active nav link on scroll --- */
