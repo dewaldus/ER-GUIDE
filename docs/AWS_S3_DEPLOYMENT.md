@@ -1,6 +1,6 @@
 # ERGuide website: Amazon S3 deployment guide
 
-This folder contains a static website. It has no build step and can be served from Amazon S3 through Amazon CloudFront.
+The production website lives in the repository's `site/` folder. It is a static project with no build step and can be served from Amazon S3 through Amazon CloudFront.
 
 The production recommendation is a **private S3 bucket behind CloudFront**, not a public S3 website endpoint.
 
@@ -41,9 +41,9 @@ https://erguide.co.za/login
 
 Choose one canonical marketing hostname, such as `www.erguide.digital`, and redirect the non-canonical hostname to it. Do not serve the same content from both `www` and the apex domain without a redirect.
 
-## Public files
+## Deployment source
 
-Deploy these files and folders:
+Deploy only the contents of the repository's `site/` folder:
 
 ```text
 index.html
@@ -55,18 +55,16 @@ css/
 js/
 ```
 
-Do not publish:
+Repository-level documentation, Docker files and archived source material are deliberately outside `site/` and must not be uploaded to the web bucket:
 
 ```text
-docs/
 README.md
-.DS_Store
-assets/.DS_Store
-assets/team/
-assets/Gemini_Generated_Image_h68lwjh68lwjh68l.png
+docs/
+source-assets/
+Dockerfile
+docker-compose.yml
+THIRD_PARTY_NOTICES.md
 ```
-
-The retired Dieter photograph has been removed from the source folder. The `assets/team/` exclusion remains as a defence against accidentally publishing future internal team assets. The large Gemini image is also no longer used; the optimised `assets/og-image.jpg` is the video thumbnail.
 
 ## Prerequisites
 
@@ -196,10 +194,10 @@ Configure the non-canonical hostname to return a permanent redirect to the canon
 
 ## 5. Test locally before uploading
 
-From the `New Website` folder, an optional local test server can be started with Python:
+From the repository root, an optional local test server can be started with Python:
 
 ```powershell
-python -m http.server 8080 --bind 127.0.0.1
+python -m http.server 8080 --bind 127.0.0.1 --directory .\site
 ```
 
 Open `http://127.0.0.1:8080/` and check:
@@ -220,7 +218,7 @@ Python is optional; no Python package installation is required to deploy the sit
 Set deployment-specific values:
 
 ```powershell
-$env:ERGUIDE_SITE_DIR = 'C:\Users\PHI\Documents\GitHub\ER-GUIDE\New Website'
+$env:ERGUIDE_SITE_DIR = (Resolve-Path -LiteralPath '.\site').Path
 $env:ERGUIDE_BUCKET = 'replace-with-private-bucket-name'
 $env:ERGUIDE_DISTRIBUTION_ID = 'replace-with-cloudfront-distribution-id'
 $env:ERGUIDE_AWS_PROFILE = 'erguide-production'
@@ -244,12 +242,6 @@ aws s3 sync $env:ERGUIDE_SITE_DIR "s3://$env:ERGUIDE_BUCKET/" `
   --exclude 'faq.html' `
   --exclude 'robots.txt' `
   --exclude 'sitemap.xml' `
-  --exclude 'docs/*' `
-  --exclude '*.md' `
-  --exclude '.DS_Store' `
-  --exclude 'assets/.DS_Store' `
-  --exclude 'assets/team/*' `
-  --exclude 'assets/Gemini_Generated_Image_h68lwjh68lwjh68l.png' `
   --cache-control 'public,max-age=3600,s-maxage=604800' `
   --profile $env:ERGUIDE_AWS_PROFILE
 ```
@@ -267,12 +259,6 @@ aws s3 sync $env:ERGUIDE_SITE_DIR "s3://$env:ERGUIDE_BUCKET/" `
   --exclude 'faq.html' `
   --exclude 'robots.txt' `
   --exclude 'sitemap.xml' `
-  --exclude 'docs/*' `
-  --exclude '*.md' `
-  --exclude '.DS_Store' `
-  --exclude 'assets/.DS_Store' `
-  --exclude 'assets/team/*' `
-  --exclude 'assets/Gemini_Generated_Image_h68lwjh68lwjh68l.png' `
   --cache-control 'public,max-age=3600,s-maxage=604800' `
   --profile $env:ERGUIDE_AWS_PROFILE
 ```
@@ -302,26 +288,6 @@ aws s3 cp "$env:ERGUIDE_SITE_DIR\sitemap.xml" "s3://$env:ERGUIDE_BUCKET/sitemap.
   --cache-control 'public,max-age=0,must-revalidate,s-maxage=300' `
   --profile $env:ERGUIDE_AWS_PROFILE
 ```
-
-### Remove a previously deployed Dieter image
-
-The exclusion prevents new uploads, but an excluded object that already exists remotely is not deleted by `sync --delete`.
-
-Check the exact key first:
-
-```powershell
-aws s3 ls "s3://$env:ERGUIDE_BUCKET/assets/team/dieter-bierman.jpg" `
-  --profile $env:ERGUIDE_AWS_PROFILE
-```
-
-If that exact object exists and removal has been approved, delete it:
-
-```powershell
-aws s3 rm "s3://$env:ERGUIDE_BUCKET/assets/team/dieter-bierman.jpg" `
-  --profile $env:ERGUIDE_AWS_PROFILE
-```
-
-S3 Versioning makes the deletion recoverable by placing a delete marker over the previous version.
 
 ## 7. Invalidate CloudFront
 
@@ -410,4 +376,4 @@ Use a direct S3 website endpoint only for a temporary, non-sensitive preview. Us
 - A server-side contact form would require a separate service such as API Gateway and Lambda or a managed form provider.
 - The login and Discovery portal are external applications and are not deployed to this S3 bucket.
 - The promotional video is a large media file, so CloudFront caching and byte-range support should be verified after deployment.
-- Do not publish internal planning documents from `docs/`.
+- Always deploy from `site/`, not from the repository root.

@@ -1,4 +1,12 @@
 .git
+.gitignore
 .github
 .claude
+.codex
+.vscode
+.idea
 .DS_Store
+docs
+source-assets
+README.md
+THIRD_PARTY_NOTICES.md
