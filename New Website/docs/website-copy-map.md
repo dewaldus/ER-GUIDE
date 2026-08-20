@@ -119,6 +119,8 @@ Heading:
 
 > Selected organisations using ERGuide
 
+Visible client set: Woolworths, ABSA Bank, Capitec Bank, Discovery, TFG Group, BankservAfrica, Hungry Lion, Capfin, King Price Insurance, PEPKOR Payments & Lending and Tenacity.
+
 The logos stay as supplied. Confirm current client relationships and logo permissions before public launch.
 
 ## The problem

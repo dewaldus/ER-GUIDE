@@ -838,24 +838,43 @@ ul, ol { list-style: none; }
 }
 
 .logo-track {
+  --logo-gap: clamp(2rem, 5vw, 3rem);
   display: flex;
-  gap: var(--space-12);
+  gap: 0;
   align-items: center;
   width: max-content;
-  animation: marquee 32s linear infinite;
+  animation: marquee 44s linear infinite;
   will-change: transform;
 }
 
 .logo-track:hover { animation-play-state: paused; }
 
+.logo-group {
+  display: flex;
+  align-items: center;
+  gap: var(--logo-gap);
+  padding-right: var(--logo-gap);
+  flex: none;
+}
+
 .logo-track img {
-  height: 40px;
+  height: var(--logo-height, 40px);
   width: auto;
   object-fit: contain;
   filter: grayscale(100%) opacity(0.68);
   transition: filter var(--transition-base);
-  flex-shrink: 0;
+  flex: none;
 }
+
+.logo-square { --logo-height: 30px; }
+.logo-hungry { --logo-height: 36px; }
+.logo-bankserv { --logo-height: 42px; }
+.logo-king-price { --logo-height: 40px; }
+.logo-pepkor { --logo-height: 44px; }
+.logo-discovery { --logo-height: 54px; }
+.logo-tenacity { --logo-height: 64px; }
+.logo-wide { --logo-height: 68px; }
+.logo-capfin { --logo-height: 72px; }
 
 .logo-track img:hover { filter: grayscale(0%) opacity(1); }
 
@@ -1705,7 +1724,22 @@ ul, ol { list-style: none; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
-  .logo-track { animation: none; }
+  .logo-track {
+    animation: none;
+    width: 100%;
+    justify-content: center;
+    will-change: auto;
+  }
+  .logo-track-wrapper {
+    -webkit-mask-image: none;
+    mask-image: none;
+  }
+  .logo-group {
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0 var(--space-4);
+  }
+  .logo-group + .logo-group { display: none; }
   .reveal { opacity: 1; transform: none; }
   .hero-badge,
   .hero-title-line1,
