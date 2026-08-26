@@ -365,8 +365,8 @@ ul, ol { list-style: none; }
 
 .navbar-nav a {
   font-size: var(--text-sm);
-  font-weight: 500;
-  color: var(--color-muted);
+  font-weight: 600;
+  color: var(--color-text);
   transition: color var(--transition-fast);
 }
 .navbar-nav a:hover, .navbar-nav a.active { color: var(--color-primary-dark); }
@@ -384,8 +384,8 @@ ul, ol { list-style: none; }
 .navbar-login {
   display: none;
   font-size: var(--text-sm);
-  font-weight: 500;
-  color: var(--color-muted);
+  font-weight: 600;
+  color: var(--color-text);
   transition: color var(--transition-fast);
 }
 .navbar-login:hover { color: var(--color-primary-dark); }
@@ -801,7 +801,6 @@ ul, ol { list-style: none; }
 
 .logo-square { --logo-height: 30px; }
 .logo-hungry { --logo-height: 36px; }
-.logo-bankserv { --logo-height: 42px; }
 .logo-king-price { --logo-height: 40px; }
 .logo-pepkor { --logo-height: 44px; }
 .logo-discovery { --logo-height: 54px; }
