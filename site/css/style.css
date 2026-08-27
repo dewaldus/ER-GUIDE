@@ -139,6 +139,71 @@ ul, ol { list-style: none; }
   margin-bottom: var(--space-4);
 }
 
+/* --- Portal-aligned icon system --- */
+.portal-icon {
+  display: block;
+  width: 24px;
+  height: 24px;
+  flex: 0 0 auto;
+  fill: currentColor;
+}
+
+.section-label .portal-icon,
+.hero-badge .portal-icon {
+  width: 14px;
+  height: 14px;
+}
+
+.btn .portal-icon {
+  width: 18px;
+  height: 18px;
+}
+
+.workflow-toggle .portal-icon {
+  width: 16px;
+  height: 16px;
+}
+
+.why-icon .portal-icon,
+.feature-icon .portal-icon {
+  width: 24px;
+  height: 24px;
+}
+
+.feature-step .portal-icon {
+  width: 22px;
+  height: 22px;
+}
+
+.portal-icon-mask {
+  width: 23px;
+  height: 23px;
+  background-color: currentColor;
+  -webkit-mask: var(--portal-icon-mask) center / contain no-repeat;
+  mask: var(--portal-icon-mask) center / contain no-repeat;
+}
+
+.portal-icon-discipline {
+  --portal-icon-mask: url('../assets/icons/portal/discipline.png');
+}
+
+.portal-icon-poor-performance,
+.portal-icon-incompatibility {
+  --portal-icon-mask: url('../assets/icons/portal/poor-performance.png');
+}
+
+.portal-icon-ill-health {
+  --portal-icon-mask: url('../assets/icons/portal/ill-health.png');
+}
+
+.portal-icon-complaints {
+  --portal-icon-mask: url('../assets/icons/portal/complaints-grievances.png');
+}
+
+.portal-icon-operational-requirements {
+  --portal-icon-mask: url('../assets/icons/portal/operational-requirements.png');
+}
+
 .section-title {
   font-size: var(--text-2xl);
   font-weight: 700;
@@ -924,6 +989,19 @@ ul, ol { list-style: none; }
   display: flex; align-items: center; justify-content: center;
   color: var(--color-primary-dark);
   flex-shrink: 0;
+  transition:
+    background-color var(--transition-fast),
+    color var(--transition-fast),
+    box-shadow var(--transition-fast);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .solution .feature-card:hover .feature-icon,
+  .processes .feature-card:hover .feature-icon {
+    background-color: var(--color-primary);
+    color: #ffffff;
+    box-shadow: 0 8px 18px rgba(1,122,52,0.24);
+  }
 }
 
 .feature-card h3 {
@@ -1486,6 +1564,8 @@ ul, ol { list-style: none; }
   box-shadow: var(--shadow-xl);
 }
 
+.contact-botcheck { display: none; }
+
 .contact-form h3 {
   color: var(--color-secondary);
   font-size: var(--text-xl);
@@ -1560,6 +1640,11 @@ ul, ol { list-style: none; }
 
 .contact-form .btn { justify-self: start; }
 
+.contact-form .btn:disabled {
+  cursor: wait;
+  opacity: 0.72;
+}
+
 .contact-form-note,
 .contact-form-status {
   color: var(--color-muted);
@@ -1568,6 +1653,16 @@ ul, ol { list-style: none; }
 }
 
 .contact-form-status:empty { display: none; }
+
+.contact-form-status[data-state="success"] {
+  color: #137333;
+  font-weight: 700;
+}
+
+.contact-form-status[data-state="error"] {
+  color: #b42318;
+  font-weight: 700;
+}
 
 @media (min-width: 768px) {
   .contact-form-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
@@ -2118,6 +2213,6 @@ ul, ol { list-style: none; }
   .hero-title .highlight,
   .hero-title .highlight::after,
   .hero-actions .btn,
-  .hero-trust { animation: none; opacity: 1; transform: none; color: inherit; }
+  .hero-trust { animation: none; opacity: 1; transform: none; }
   .hero-title .highlight { color: var(--color-primary); }
 }

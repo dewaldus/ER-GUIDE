@@ -457,13 +457,16 @@
     sections.forEach(s => sectionObserver.observe(s));
   }
 
-  /* --- Contact form: prepare a message in the visitor's email app --- */
+  /* --- Contact form: submit enquiries through Web3Forms --- */
   const contactForm = document.getElementById('contactForm');
   const contactFormStatus = document.getElementById('contactFormStatus');
+  const contactSubmitButton = contactForm?.querySelector('button[type="submit"]');
 
   if (contactForm) {
-    contactForm.addEventListener('submit', event => {
+    contactForm.addEventListener('submit', async event => {
       event.preventDefault();
+
+      if (contactForm.dataset.submitting === 'true') return;
 
       const formData = new FormData(contactForm);
       const name = String(formData.get('name') || '').trim();
@@ -471,23 +474,64 @@
       const organisation = String(formData.get('organisation') || '').trim();
       const message = String(formData.get('message') || '').trim();
 
-      const subject = `ERGuide website enquiry from ${name}`;
-      const body = [
-        'Hello ERGuide,',
-        '',
-        `Name: ${name}`,
-        `Work email: ${email}`,
-        organisation ? `Organisation: ${organisation}` : '',
-        '',
-        'I would like help with:',
-        message,
-      ].filter((line, index, lines) => line || lines[index - 1] !== '').join('\n');
+      formData.set('name', name);
+      formData.set('email', email);
+      formData.set('organisation', organisation);
+      formData.set('message', message);
+      formData.set('subject', `ERGuide website enquiry from ${name}`);
+
+      contactForm.dataset.submitting = 'true';
+      contactForm.setAttribute('aria-busy', 'true');
 
       if (contactFormStatus) {
-        contactFormStatus.textContent = 'Opening your email app so you can review and send the enquiry.';
+        contactFormStatus.dataset.state = 'loading';
+        contactFormStatus.setAttribute('role', 'status');
+        contactFormStatus.textContent = 'Sending your enquiry…';
       }
 
-      window.location.href = `mailto:info@erguide.co.za?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+      const originalButtonLabel = contactSubmitButton?.textContent;
+
+      if (contactSubmitButton) {
+        contactSubmitButton.disabled = true;
+        contactSubmitButton.textContent = 'Sending enquiry…';
+      }
+
+      try {
+        const response = await fetch(contactForm.action, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            Accept: 'application/json',
+          },
+          body: JSON.stringify(Object.fromEntries(formData)),
+        });
+        const result = await response.json();
+
+        if (!response.ok || !result.success) {
+          throw new Error('Web3Forms rejected the enquiry.');
+        }
+
+        contactForm.reset();
+
+        if (contactFormStatus) {
+          contactFormStatus.dataset.state = 'success';
+          contactFormStatus.textContent = 'Thank you. Your enquiry has been sent to ERGuide.';
+        }
+      } catch (error) {
+        if (contactFormStatus) {
+          contactFormStatus.dataset.state = 'error';
+          contactFormStatus.setAttribute('role', 'alert');
+          contactFormStatus.textContent = "We couldn't send your enquiry. Please try again, or email info@erguide.digital.";
+        }
+      } finally {
+        delete contactForm.dataset.submitting;
+        contactForm.removeAttribute('aria-busy');
+
+        if (contactSubmitButton) {
+          contactSubmitButton.disabled = false;
+          contactSubmitButton.textContent = originalButtonLabel || 'Send enquiry';
+        }
+      }
     });
   }
 
