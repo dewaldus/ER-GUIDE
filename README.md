@@ -67,7 +67,7 @@ Confirm the canonical marketing domain before deployment. If it changes, update 
 
 ## Operational notes
 
-- The public contact form opens the visitor's email application; it does not submit to a server-side form service.
+- The public contact form submits through Web3Forms and shows the result without leaving the page. Its Form Access Key is intentionally public client-side configuration; the recipient address is managed in the Web3Forms account.
 - The existing-user login is an external application and is not deployed from this repository.
 - Archived files under `source-assets/` are retained for reference and are not part of the live site.
 - This is a proprietary ERGuide project. Repository access does not grant rights beyond the applicable client or supplier agreement.

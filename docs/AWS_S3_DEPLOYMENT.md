@@ -372,8 +372,8 @@ Use a direct S3 website endpoint only for a temporary, non-sensitive preview. Us
 
 ## Site-specific operational notes
 
-- The contact form opens the visitor's email application; S3 does not process form submissions.
-- A server-side contact form would require a separate service such as API Gateway and Lambda or a managed form provider.
+- The contact form submits through the managed Web3Forms service; S3 does not process form submissions.
+- After deployment, send one controlled test enquiry and confirm that Web3Forms delivers it to the approved recipient without routing it to junk mail.
 - The login and Discovery portal are external applications and are not deployed to this S3 bucket.
 - The promotional video is a large media file, so CloudFront caching and byte-range support should be verified after deployment.
 - Always deploy from `site/`, not from the repository root.
